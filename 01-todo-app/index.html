@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Taskly — Quản lý công việc</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="logo">
+          <div class="logo-icon">
+            <svg width="16" height="16" viewBox="0 0 16 16">
+              <path
+                d="M2 3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3zM2 9a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V9zM3 15a1 1 0 1 0 0-2 1 1 0 0 0 0 2zM7 14H13a1 1 0 1 0 0-2H7a1 1 0 1 0 0 2z"
+              />
+            </svg>
+          </div>
+          <span class="logo-text">Taskly</span>
+        </div>
+
+        <div class="sidebar-section">
+          <div class="sidebar-label">Views</div>
+          <div class="nav-item active" data-view="today" onclick="setView('today')">
+            <svg class="nav-icon" viewBox="0 0 20 20" fill="currentColor">
+              <path
+                d="M5.25 12a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 .75.75v.01a.75.75 0 0 1-.75.75H6a.75.75 0 0 1-.75-.75V12zM6 13.25a.75.75 0 0 0-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 0 0 .75-.75V14a.75.75 0 0 0-.75-.75H6zM9.25 12a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 .75.75v.01a.75.75 0 0 1-.75.75H10a.75.75 0 0 1-.75-.75V12zM10 13.25a.75.75 0 0 0-.75.75v.01c0 .414.336.75.75.75h.01a.75.75 0 0 0 .75-.75V14a.75.75 0 0 0-.75-.75H10zM13.25 12a.75.75 0 0 1 .75-.75h.01a.75.75 0 0 1 .75.75v.01a.75.75 0 0 1-.75.75H14a.75.75 0 0 1-.75-.75V12zM5.5 4A1.5 1.5 0 0 0 4 5.5v11A1.5 1.5 0 0 0 5.5 18h9a1.5 1.5 0 0 0 1.5-1.5v-11A1.5 1.5 0 0 0 14.5 4h-9zM5.5 5.5h9v2h-9v-2z"
+              />
+            </svg>
+            Hôm nay
+            <span class="nav-count" id="count-today">0</span>
+          </div>
+          <div class="nav-item" data-view="all" onclick="setView('all')">
+            <svg class="nav-icon" viewBox="0 0 20 20" fill="currentColor">
+              <path
+                d="M2 4.75A.75.75 0 0 1 2.75 4h14.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 4.75zm0 5A.75.75 0 0 1 2.75 9h14.5a.75.75 0 0 1 0 1.5H2.75A.75.75 0 0 1 2 9.75zm0 5a.75.75 0 0 1 .75-.75h14.5a.75.75 0 0 1 0 1.5H2.75a.75.75 0 0 1-.75-.75z"
+              />
+            </svg>
+            Tất cả
+            <span class="nav-count" id="count-all">0</span>
+          </div>
+          <div class="nav-item" data-view="upcoming" onclick="setView('upcoming')">
+            <svg class="nav-icon" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm.75-13a.75.75 0 0 0-1.5 0v5c0 .414.336.75.75.75h4a.75.75 0 0 0 0-1.5h-3.25V5z" />
+            </svg>
+            Sắp tới
+            <span class="nav-count" id="count-upcoming">0</span>
+          </div>
+          <div class="nav-item" data-view="done" onclick="setView('done')">
+            <svg class="nav-icon" viewBox="0 0 20 20" fill="currentColor">
+              <path
+                fill-rule="evenodd"
+                d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            Hoàn thành
+            <span class="nav-count" id="count-done">0</span>
+          </div>
+        </div>
+
+        <div class="sidebar-section">
+          <div class="sidebar-label">Danh mục</div>
+          <div class="nav-item" data-view="cat-work" onclick="setView('cat-work')">
+            <svg class="nav-icon" viewBox="0 0 20 20" fill="currentColor">
+              <path
+                fill-rule="evenodd"
+                d="M6 3.75A2.75 2.75 0 0 1 8.75 1h2.5A2.75 2.75 0 0 1 14 3.75v.443c.572.055 1.14.122 1.706.2C17.053 4.582 18 5.75 18 7.07v3.469c0 1.126-.694 2.191-1.83 2.54-1.952.599-4.024.921-6.17.921s-4.219-.322-6.17-.921C2.694 12.73 2 11.665 2 10.539V7.07c0-1.321.947-2.489 2.294-2.676A41.047 41.047 0 0 1 6 4.193V3.75zm6.5 0v.325a41.622 41.622 0 0 0-5 0V3.75c0-.69.56-1.25 1.25-1.25h2.5c.69 0 1.25.56 1.25 1.25zM10 10a1 1 0 0 0-1 1v.01a1 1 0 0 0 1 1h.01a1 1 0 0 0 1-1V11a1 1 0 0 0-1-1H10z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            Công việc
+            <span class="nav-count" id="count-work">0</span>
+          </div>
+          <div class="nav-item" data-view="cat-personal" onclick="setView('cat-personal')">
+            <svg class="nav-icon" viewBox="0 0 20 20" fill="currentColor">
+              <path
+                d="M10 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM3.465 14.493a1.23 1.23 0 0 0 .41 1.412A9.957 9.957 0 0 0 10 18c2.31 0 4.438-.784 6.131-2.1.43-.333.604-.903.408-1.41a7.002 7.002 0 0 0-13.074.003z"
+              />
+            </svg>
+            Cá nhân
+            <span class="nav-count" id="count-personal">0</span>
+          </div>
+          <div class="nav-item" data-view="cat-study" onclick="setView('cat-study')">
+            <svg class="nav-icon" viewBox="0 0 20 20" fill="currentColor">
+              <path d="M10.75 16.82A7.462 7.462 0 0 1 10 17c-.25 0-.498-.012-.745-.036a.75.75 0 0 1-.69-.75v-4.6a3.5 3.5 0 1 1 2.875 0v4.6a.75.75 0 0 1-.69.75z" />
+            </svg>
+            Học tập
+            <span class="nav-count" id="count-study">0</span>
+          </div>
+        </div>
+
+        <div class="sidebar-footer">
+          <div class="progress-wrap">
+            <div class="progress-label">
+              <span>Tiến độ hôm nay</span>
+              <span id="progress-pct">0%</span>
+            </div>
+            <div class="progress-bar">
+              <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main -->
+      <main class="main">
+        <div class="main-header">
+          <div class="date-chip">
+            <svg viewBox="0 0 14 14" fill="currentColor">
+              <path d="M4.5 1a.5.5 0 0 0-1 0v.5H3a2 2 0 0 0-2 2v7a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-7a2 2 0 0 0-2-2h-.5V1a.5.5 0 0 0-1 0v.5h-5V1zM2 5h10v5.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V5z" />
+            </svg>
+            <span id="today-label">Hôm nay</span>
+          </div>
+          <h1 id="view-title">Công việc hôm nay</h1>
+          <p class="subtitle" id="view-subtitle">Hãy bắt đầu ngày mới thật hiệu quả!</p>
+        </div>
+
+        <!-- Stats -->
+        <div class="stats">
+          <div class="stat-card">
+            <div class="stat-value" id="s-total">0</div>
+            <div class="stat-label">Tổng nhiệm vụ</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" style="color: var(--green)" id="s-done">0</div>
+            <div class="stat-label">Hoàn thành</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" style="color: var(--amber)" id="s-pending">0</div>
+            <div class="stat-label">Đang chờ</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-value" style="color: var(--red)" id="s-overdue">0</div>
+            <div class="stat-label">Quá hạn</div>
+          </div>
+        </div>
+
+        <!-- Input -->
+        <div class="input-card">
+          <div class="input-row">
+            <button class="add-icon-btn" onclick="addTask()" title="Thêm nhiệm vụ">
+              <svg width="14" height="14" viewBox="0 0 14 14">
+                <path d="M7 1a.75.75 0 0 1 .75.75v4.5h4.5a.75.75 0 0 1 0 1.5h-4.5v4.5a.75.75 0 0 1-1.5 0v-4.5h-4.5a.75.75 0 0 1 0-1.5h4.5v-4.5A.75.75 0 0 1 7 1z" />
+              </svg>
+            </button>
+            <input type="text" class="task-input" id="task-input" placeholder="Thêm nhiệm vụ mới..." onkeydown="if (event.key === 'Enter') addTask();" />
+          </div>
+          <div class="input-meta">
+            <button class="meta-btn active" data-prio="medium" id="prio-btn" onclick="cyclePriority()">
+              <svg viewBox="0 0 13 13" fill="currentColor"><circle cx="6.5" cy="6.5" r="3" /></svg>
+              <span id="prio-label">Trung bình</span>
+            </button>
+            <select class="meta-select" id="cat-select">
+              <option value="work">Công việc</option>
+              <option value="personal">Cá nhân</option>
+              <option value="study">Học tập</option>
+              <option value="other">Khác</option>
+            </select>
+            <input type="date" class="meta-date" id="due-input" />
+            <button class="add-btn" onclick="addTask()">Thêm</button>
+          </div>
+        </div>
+
+        <!-- Filter bar -->
+        <div class="filter-bar">
+          <div class="filter-tabs">
+            <button class="filter-tab active" onclick="setFilter('all', this)">Tất cả</button>
+            <button class="filter-tab" onclick="setFilter('active', this)">Đang làm</button>
+            <button class="filter-tab" onclick="setFilter('done', this)">Xong</button>
+            <button class="filter-tab" onclick="setFilter('high', this)">Ưu tiên cao</button>
+          </div>
+          <select class="sort-select" onchange="setSort(this.value)">
+            <option value="created">Mới nhất</option>
+            <option value="priority">Ưu tiên</option>
+            <option value="due">Hạn chót</option>
+            <option value="alpha">A–Z</option>
+          </select>
+        </div>
+
+        <!-- Task list -->
+        <div class="task-list" id="task-list"></div>
+      </main>
+    </div>
+
+    <!-- Edit modal -->
+    <div class="modal-backdrop" id="modal">
+      <div class="modal">
+        <div class="modal-title">Chỉnh sửa nhiệm vụ</div>
+        <label>Tên nhiệm vụ</label>
+        <input type="text" id="edit-text" placeholder="Nhập tên nhiệm vụ..." />
+        <label>Ghi chú</label>
+        <textarea id="edit-note" placeholder="Thêm ghi chú..."></textarea>
+        <label>Mức độ ưu tiên</label>
+        <select id="edit-prio">
+          <option value="low">Thấp</option>
+          <option value="medium">Trung bình</option>
+          <option value="high">Cao</option>
+        </select>
+        <label>Danh mục</label>
+        <select id="edit-cat">
+          <option value="work">Công việc</option>
+          <option value="personal">Cá nhân</option>
+          <option value="study">Học tập</option>
+          <option value="other">Khác</option>
+        </select>
+        <label>Hạn chót</label>
+        <input type="date" id="edit-due" />
+        <div class="modal-footer">
+          <button class="btn-ghost" onclick="closeModal()">Hủy</button>
+          <button class="btn-primary" onclick="saveEdit()">Lưu thay đổi</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast container -->
+    <div class="toast-container" id="toasts"></div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

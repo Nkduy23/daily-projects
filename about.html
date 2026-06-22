@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Giới thiệu — Daily Projects</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      :root {
+        --bg: #f7f6f2;
+        --surface: #ffffff;
+        --surface-2: #f0efe9;
+        --border: #e4e2da;
+        --text-1: #1a1916;
+        --text-2: #6b6860;
+        --text-3: #a8a69e;
+        --accent: #2b6cb0;
+        --green-3: #2cb043;
+        --radius-sm: 5px;
+        --radius: 10px;
+        --radius-lg: 14px;
+        --font-display: "Space Grotesk", sans-serif;
+        --font-body: "Inter", sans-serif;
+        --tr: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg: #111110;
+          --surface: #1c1c1a;
+          --surface-2: #252522;
+          --border: #2e2d2a;
+          --text-1: #f0efe9;
+          --text-2: #9b9990;
+          --text-3: #5c5b55;
+          --accent: #60a5fa;
+          --green-3: #4ac963;
+        }
+      }
+
+      body {
+        font-family: var(--font-body);
+        background: var(--bg);
+        color: var(--text-1);
+        min-height: 100vh;
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+
+      nav {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: var(--bg);
+        border-bottom: 1px solid var(--border);
+        padding: 0 40px;
+        height: 56px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-family: var(--font-display);
+        font-size: 15px;
+        font-weight: 700;
+      }
+
+      .nav-logo-mark {
+        width: 28px;
+        height: 28px;
+        background: var(--text-1);
+        border-radius: 6px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .nav-logo-mark svg {
+        fill: var(--bg);
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .nav-link {
+        padding: 6px 12px;
+        border-radius: var(--radius-sm);
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--text-2);
+        transition: all var(--tr);
+      }
+
+      .nav-link:hover {
+        background: var(--surface-2);
+        color: var(--text-1);
+      }
+      .nav-link.active {
+        color: var(--text-1);
+        background: var(--surface-2);
+      }
+
+      /* ── Content ── */
+      .page {
+        max-width: 680px;
+        margin: 0 auto;
+        padding: 64px 40px 96px;
+      }
+
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 13px;
+        font-weight: 500;
+        color: var(--text-2);
+        margin-bottom: 40px;
+        transition: color var(--tr);
+      }
+
+      .back-link:hover {
+        color: var(--text-1);
+      }
+
+      .page-eyebrow {
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.8px;
+        text-transform: uppercase;
+        color: var(--text-3);
+        margin-bottom: 12px;
+      }
+
+      h1 {
+        font-family: var(--font-display);
+        font-size: 36px;
+        font-weight: 700;
+        letter-spacing: -1px;
+        line-height: 1.15;
+        margin-bottom: 20px;
+      }
+
+      .lead {
+        font-size: 16px;
+        color: var(--text-2);
+        line-height: 1.75;
+        margin-bottom: 48px;
+        border-left: 2px solid var(--border);
+        padding-left: 20px;
+      }
+
+      .divider {
+        height: 1px;
+        background: var(--border);
+        margin: 48px 0;
+      }
+
+      h2 {
+        font-family: var(--font-display);
+        font-size: 18px;
+        font-weight: 700;
+        letter-spacing: -0.3px;
+        margin-bottom: 16px;
+      }
+
+      p {
+        font-size: 14px;
+        color: var(--text-2);
+        line-height: 1.8;
+        margin-bottom: 16px;
+      }
+
+      p:last-child {
+        margin-bottom: 0;
+      }
+
+      /* ── Rule cards ── */
+      .rules {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 0;
+      }
+
+      .rule-card {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 18px 20px;
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+      }
+
+      .rule-num {
+        width: 28px;
+        height: 28px;
+        border-radius: 6px;
+        background: var(--text-1);
+        color: var(--bg);
+        font-family: var(--font-display);
+        font-size: 13px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        margin-top: 1px;
+      }
+
+      .rule-body {
+      }
+      .rule-title {
+        font-weight: 600;
+        font-size: 14px;
+        margin-bottom: 4px;
+      }
+      .rule-desc {
+        font-size: 13px;
+        color: var(--text-2);
+        line-height: 1.6;
+        margin: 0;
+      }
+
+      /* ── Timeline ── */
+      .timeline {
+        display: flex;
+        flex-direction: column;
+        border-left: 1px solid var(--border);
+        padding-left: 24px;
+        margin-left: 8px;
+        gap: 0;
+      }
+
+      .tl-item {
+        position: relative;
+        padding-bottom: 28px;
+      }
+
+      .tl-item:last-child {
+        padding-bottom: 0;
+      }
+
+      .tl-dot {
+        position: absolute;
+        left: -29px;
+        top: 3px;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--surface-2);
+        border: 1.5px solid var(--border);
+      }
+
+      .tl-dot.done {
+        background: var(--green-3);
+        border-color: var(--green-3);
+      }
+      .tl-dot.active {
+        background: var(--accent);
+        border-color: var(--accent);
+      }
+
+      .tl-week {
+        font-size: 11px;
+        font-weight: 600;
+        color: var(--text-3);
+        letter-spacing: 0.5px;
+        margin-bottom: 6px;
+      }
+
+      .tl-projects {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+
+      .tl-project {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        padding: 4px 10px;
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--text-2);
+      }
+
+      .tl-project.done {
+        color: var(--green-3);
+        border-color: currentColor;
+        background: transparent;
+      }
+
+      /* ── Stack section ── */
+      .stack-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        gap: 10px;
+      }
+
+      .stack-item {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        padding: 14px 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .stack-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+      }
+
+      .stack-name {
+        font-weight: 600;
+        font-size: 13px;
+      }
+      .stack-desc {
+        font-size: 12px;
+        color: var(--text-3);
+      }
+
+      @media (max-width: 640px) {
+        nav {
+          padding: 0 20px;
+        }
+        .page {
+          padding: 40px 20px 64px;
+        }
+        h1 {
+          font-size: 28px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-mark">
+          <svg width="14" height="14" viewBox="0 0 14 14">
+            <path
+              d="M1 2a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2zm0 5a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V7zm1 4a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2H2z"
+            />
+          </svg>
+        </div>
+        Daily Projects
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link">Trang chủ</a>
+        <a href="about.html" class="nav-link active">Giới thiệu</a>
+      </div>
+    </nav>
+
+    <div class="page">
+      <a href="index.html" class="back-link">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M8.5 2.5 3.5 7l5 4.5V8.5H12v-3H8.5V2.5z" /></svg>
+        Quay về trang chủ
+      </a>
+
+      <div class="page-eyebrow">About this series</div>
+      <h1>30 ngày, 30 dự án.<br />Không bỏ ngày nào.</h1>
+
+      <p class="lead">
+        Đây là challenge cá nhân: build một project hoàn chỉnh mỗi ngày trong 30 ngày liên tiếp. Không giới hạn ngôn ngữ, không giới hạn độ phức tạp — chỉ cần mỗi ngày phải có một thứ gì đó chạy được
+        và nhìn ra hồn.
+      </p>
+
+      <h2>Tại sao làm điều này?</h2>
+      <p>
+        Học lập trình bằng cách đọc tutorial rất nhàm. Cách tốt nhất là ship thật, fail thật, sửa thật. 30 project trong 30 ngày ép não phải giải quyết vấn đề thực tế mỗi ngày — từ UX đến performance
+        đến code architecture.
+      </p>
+      <p>Sau 30 ngày, đây cũng là một portfolio đủ đa dạng để show được range kỹ năng — không chỉ một stack, không chỉ một kiểu app.</p>
+
+      <div class="divider"></div>
+
+      <h2>Quy tắc của chuỗi</h2>
+      <div class="rules">
+        <div class="rule-card">
+          <div class="rule-num">1</div>
+          <div class="rule-body">
+            <div class="rule-title">Mỗi ngày ít nhất một project hoàn chỉnh</div>
+            <p class="rule-desc">Không cần hoàn hảo nhưng phải chạy được, có UI thực tế, có thể dùng được. Không để ngày nào trống.</p>
+          </div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-num">2</div>
+          <div class="rule-body">
+            <div class="rule-title">Không copy-paste từ tutorial</div>
+            <p class="rule-desc">Có thể xem tài liệu, đọc docs — nhưng code phải tự tay viết. Logic phải tự nghĩ. UI phải tự thiết kế.</p>
+          </div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-num">3</div>
+          <div class="rule-body">
+            <div class="rule-title">Design phải có chủ ý</div>
+            <p class="rule-desc">Mỗi project phải có một design token system nhất quán. Không dùng Bootstrap hay framework CSS — tự viết từ đầu.</p>
+          </div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-num">4</div>
+          <div class="rule-body">
+            <div class="rule-title">Không giới hạn ngôn ngữ hay công cụ</div>
+            <p class="rule-desc">HTML/CSS/JS là baseline. React, Python, TypeScript đều có thể xuất hiện tùy theo bài toán phù hợp nhất.</p>
+          </div>
+        </div>
+        <div class="rule-card">
+          <div class="rule-num">5</div>
+          <div class="rule-body">
+            <div class="rule-title">Dark mode là bắt buộc</div>
+            <p class="rule-desc">Mỗi project phải support cả light lẫn dark mode. Đây là tiêu chuẩn tối thiểu của một app production-ready.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <h2>Lộ trình 30 ngày</h2>
+
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-dot done"></div>
+          <div class="tl-week">Tuần 1 — UI Fundamentals</div>
+          <div class="tl-projects">
+            <span class="tl-project done">01 · Todo App</span>
+            <span class="tl-project">02 · Notes App</span>
+            <span class="tl-project">03 · Pomodoro Timer</span>
+            <span class="tl-project">04 · Habit Tracker</span>
+            <span class="tl-project">05 · Expense Tracker</span>
+            <span class="tl-project">06 · BMI Calculator</span>
+            <span class="tl-project">07 · Unit Converter</span>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-week">Tuần 2 — Components & Tools</div>
+          <div class="tl-projects">
+            <span class="tl-project">08 · Password Generator</span>
+            <span class="tl-project">09 · Color Palette</span>
+            <span class="tl-project">10 · Markdown Previewer</span>
+            <span class="tl-project">11 · Modal System</span>
+            <span class="tl-project">12 · Image Slider</span>
+            <span class="tl-project">13 · Testimonial Slider</span>
+            <span class="tl-project">14 · Accordion FAQ</span>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-week">Tuần 3 — Forms & Pages</div>
+          <div class="tl-projects">
+            <span class="tl-project">15 · Dropdown Menu</span>
+            <span class="tl-project">16 · Tabs Component</span>
+            <span class="tl-project">17 · Toast Notification</span>
+            <span class="tl-project">18 · Custom Select</span>
+            <span class="tl-project">19 · Rating Component</span>
+            <span class="tl-project">20 · Progress Bar</span>
+            <span class="tl-project">21 · Contact Form</span>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-week">Tuần 4 — Full Pages & Apps</div>
+          <div class="tl-projects">
+            <span class="tl-project">22 · Multi-step Form</span>
+            <span class="tl-project">23 · Login Page</span>
+            <span class="tl-project">24 · Register Page</span>
+            <span class="tl-project">25 · Newsletter Form</span>
+            <span class="tl-project">26 · Booking Form</span>
+            <span class="tl-project">27 · Job Application</span>
+            <span class="tl-project">28 · Feedback Form</span>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-week">Bonus Days — Advanced</div>
+          <div class="tl-projects">
+            <span class="tl-project">29 · Checkout Flow</span>
+            <span class="tl-project">30 · Survey App</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <h2>Tech stack</h2>
+      <div class="stack-grid">
+        <div class="stack-item">
+          <div class="stack-dot" style="background: #e34f26"></div>
+          <div class="stack-name">HTML5</div>
+          <div class="stack-desc">Semantic markup</div>
+        </div>
+        <div class="stack-item">
+          <div class="stack-dot" style="background: #1572b6"></div>
+          <div class="stack-name">CSS3</div>
+          <div class="stack-desc">Custom properties, Grid, Flex</div>
+        </div>
+        <div class="stack-item">
+          <div class="stack-dot" style="background: #f7df1e"></div>
+          <div class="stack-name">JavaScript</div>
+          <div class="stack-desc">Vanilla ES2022+</div>
+        </div>
+        <div class="stack-item">
+          <div class="stack-dot" style="background: #3178c6"></div>
+          <div class="stack-name">TypeScript</div>
+          <div class="stack-desc">Khi project đủ phức tạp</div>
+        </div>
+        <div class="stack-item">
+          <div class="stack-dot" style="background: #61dafb"></div>
+          <div class="stack-name">React</div>
+          <div class="stack-desc">Cho app phức tạp hơn</div>
+        </div>
+        <div class="stack-item">
+          <div class="stack-dot" style="background: #3776ab"></div>
+          <div class="stack-name">Python</div>
+          <div class="stack-desc">Tùy theo cảm hứng</div>
+        </div>
+      </div>
+    </div>
+
+    <footer style="border-top: 1px solid var(--border); padding: 32px 40px; text-align: center; color: var(--text-3); font-size: 13px; font-family: var(--font-body)">
+      30 ngày · 30 dự án · 1 mục tiêu · <a href="index.html" style="color: var(--text-2)">xem tất cả →</a>
+    </footer>
+  </body>
+</html>

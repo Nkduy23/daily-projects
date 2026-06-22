@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daily Projects — 30 ngày code</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="tooltip" id="tooltip"></div>
+
+    <!-- Nav -->
+    <nav>
+      <a href="index.html" class="nav-logo">
+        <div class="nav-logo-mark">
+          <svg width="14" height="14" viewBox="0 0 14 14">
+            <path
+              d="M1 2a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2zm0 5a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V7zm1 4a1 1 0 1 0 0 2h6a1 1 0 1 0 0-2H2z"
+            />
+          </svg>
+        </div>
+        Daily Projects
+      </a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link active">Trang chủ</a>
+        <a href="about.html" class="nav-link">Giới thiệu</a>
+        <span class="nav-badge" id="nav-day-count">Day 0</span>
+      </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-eyebrow">
+        <div class="pulse"></div>
+        Đang tiến hành · 30 ngày code
+      </div>
+      <h1>Build something<br /><em>every single day.</em></h1>
+      <p class="hero-desc">Chuỗi 30 dự án — mỗi ngày một project thực tế, từ UI component đến full app. Không template, không copy-paste. Mỗi project là một portfolio piece.</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-dark">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M2 3h10v1.5H2V3zm0 3.5h10V8H2V6.5zm0 3.5h6V11.5H2V10z" /></svg>
+          Xem các dự án
+        </a>
+        <a href="about.html" class="btn btn-outline">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+            <path
+              fill-rule="evenodd"
+              d="M7 1a6 6 0 1 0 0 12A6 6 0 0 0 7 1zm0 4.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5zM6.25 7a.75.75 0 0 1 .75-.75h.25a.5.5 0 0 1 .5.5v2.5h.25a.75.75 0 0 1 0 1.5H7a.5.5 0 0 1-.5-.5v-3H6.25A.75.75 0 0 1 6.25 7z"
+              clip-rule="evenodd"
+            />
+          </svg>
+          Về series này
+        </a>
+      </div>
+    </section>
+
+    <!-- Stats bar -->
+    <div class="stats-bar">
+      <div class="stat-item">
+        <div class="stat-num" id="stat-done">0</div>
+        <div class="stat-label">Đã hoàn thành</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" id="stat-streak">0</div>
+        <div class="stat-label">Streak hiện tại 🔥</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" id="stat-remaining">30</div>
+        <div class="stat-label">Ngày còn lại</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num" id="stat-langs">0</div>
+        <div class="stat-label">Ngôn ngữ dùng</div>
+      </div>
+    </div>
+
+    <!-- Heatmap -->
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <div class="section-title">Contribution graph</div>
+        </div>
+        <span class="section-sub" id="heatmap-summary">0 projects trong 365 ngày tới</span>
+      </div>
+
+      <div class="heatmap-wrap">
+        <!-- FIX: wrap scrollable content -->
+        <div class="heatmap-scroll">
+          <div class="heatmap-inner">
+            <div class="heatmap-months" id="heatmap-months"></div>
+            <div class="heatmap-body">
+              <div class="heatmap-days">
+                <div class="day-label"></div>
+                <div class="day-label">Mon</div>
+                <div class="day-label"></div>
+                <div class="day-label">Wed</div>
+                <div class="day-label"></div>
+                <div class="day-label">Fri</div>
+                <div class="day-label"></div>
+              </div>
+              <div class="heatmap-grid" id="heatmap-grid"></div>
+            </div>
+          </div>
+        </div>
+        <div class="heatmap-footer">
+          <span class="heatmap-total" id="heatmap-total"><strong>0</strong> projects completed</span>
+          <div class="legend">
+            Ít
+            <div class="legend-cell" style="background: var(--cell)"></div>
+            <div class="legend-cell" style="background: var(--green-1)"></div>
+            <div class="legend-cell" style="background: var(--green-2)"></div>
+            <div class="legend-cell" style="background: var(--green-3)"></div>
+            <div class="legend-cell" style="background: var(--green-4)"></div>
+            Nhiều
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="section" id="projects">
+      <div class="section-header">
+        <div class="section-title">Tất cả dự án</div>
+      </div>
+
+      <div class="filter-row" id="filter-row">
+        <button class="filter-chip active" data-lang="all" onclick="filterProjects('all', this)">Tất cả</button>
+      </div>
+
+      <div class="project-grid" id="project-grid"></div>
+    </section>
+
+    <footer>Made with focus · 30 days, 30 projects · <a href="about.html" style="color: var(--text-2)">về series này →</a></footer>
+
+    <script src="./main.js"></script>
+  </body>
+</html>
