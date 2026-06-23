@@ -29,9 +29,9 @@ const PROJECTS = [
     desc: "Bộ đếm giờ Pomodoro với âm thanh và thống kê session.",
     langs: ["html", "css", "js"],
     status: "planned",
-    file: null,
+    file: "/03-pomodoro-timer/index.html",
     accent: "#C0392B",
-    date: null,
+    date: "2026-06-24",
   },
   {
     day: 4,
