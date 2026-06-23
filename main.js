@@ -17,10 +17,10 @@ const PROJECTS = [
     title: "Notes App",
     desc: "Ghi chú nhanh với markdown support và tìm kiếm real-time.",
     langs: ["html", "css", "js"],
-    status: "planned",
-    file: null,
+    status: "done",
+    file: "/02-notes-app/index.html",
     accent: "#2B6CB0",
-    date: null,
+    date: "2026-06-23",
   },
   {
     day: 3,
