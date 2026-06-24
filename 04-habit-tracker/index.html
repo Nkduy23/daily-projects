@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Habito — Habit Tracker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <!-- Nav -->
+    <nav>
+      <div class="nav-logo">
+        <div class="nav-logo-mark">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+            <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L4 8.293l6.646-6.647a.5.5 0 0 1 .708 0z" clip-rule="evenodd" />
+          </svg>
+        </div>
+        Habito
+      </div>
+      <div class="nav-center" id="nav-date"></div>
+      <div class="nav-right">
+        <div class="overall-chip" id="overall-chip">
+          <div class="chip-ring-wrap">
+            <svg width="28" height="28" viewBox="0 0 28 28">
+              <circle class="chip-ring-bg" cx="14" cy="14" r="11" />
+              <circle class="chip-ring-fg" id="chip-ring-fg" cx="14" cy="14" r="11" />
+            </svg>
+            <span class="chip-pct" id="chip-pct">0%</span>
+          </div>
+          <span class="chip-label">hôm nay</span>
+        </div>
+        <button class="nav-btn" id="add-habit-btn">
+          <svg width="13" height="13" viewBox="0 0 14 14" fill="currentColor">
+            <path d="M7 1a.75.75 0 0 1 .75.75v4.5h4.5a.75.75 0 0 1 0 1.5h-4.5v4.5a.75.75 0 0 1-1.5 0v-4.5h-4.5a.75.75 0 0 1 0-1.5h4.5v-4.5A.75.75 0 0 1 7 1z" />
+          </svg>
+          Thêm thói quen
+        </button>
+      </div>
+    </nav>
+
+    <div class="page">
+      <!-- LEFT col -->
+      <div class="left-col">
+        <!-- Today's habits -->
+        <div class="section-header">
+          <div class="section-title">Hôm nay</div>
+          <div class="section-sub" id="today-sub">0 / 0 hoàn thành</div>
+        </div>
+
+        <div id="habits-today" class="habits-today"></div>
+
+        <!-- Empty state -->
+        <div class="empty-today hidden" id="empty-today">
+          <div class="empty-icon">🌱</div>
+          <div class="empty-title">Chưa có thói quen nào</div>
+          <div class="empty-desc">Thêm thói quen đầu tiên để bắt đầu hành trình!</div>
+          <button class="btn-primary" id="empty-add-btn">
+            <svg width="13" height="13" viewBox="0 0 14 14" fill="currentColor">
+              <path d="M7 1a.75.75 0 0 1 .75.75v4.5h4.5a.75.75 0 0 1 0 1.5h-4.5v4.5a.75.75 0 0 1-1.5 0v-4.5h-4.5a.75.75 0 0 1 0-1.5h4.5v-4.5A.75.75 0 0 1 7 1z" />
+            </svg>
+            Thêm thói quen
+          </button>
+        </div>
+      </div>
+
+      <!-- RIGHT col -->
+      <div class="right-col">
+        <!-- Streak summary -->
+        <div class="card streaks-card">
+          <div class="card-title">Streak nổi bật 🔥</div>
+          <div class="streaks-list" id="streaks-list">
+            <div class="streaks-empty">Hoàn thành thói quen để xem streak</div>
+          </div>
+        </div>
+
+        <!-- Weekly overview -->
+        <div class="card">
+          <div class="card-title">Tuần này</div>
+          <div class="weekly-grid" id="weekly-grid"></div>
+        </div>
+
+        <!-- All habits manage -->
+        <div class="card">
+          <div class="card-header-row">
+            <div class="card-title">Tất cả thói quen</div>
+            <span class="habit-total-count" id="habit-total-count">0</span>
+          </div>
+          <div class="manage-list" id="manage-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add/Edit modal -->
+    <div class="modal-backdrop" id="modal-backdrop">
+      <div class="modal" id="modal">
+        <div class="modal-header">
+          <div class="modal-title" id="modal-title">Thêm thói quen</div>
+          <button class="icon-btn" id="modal-close">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+              <path
+                d="M2.22 2.22a.75.75 0 0 1 1.06 0L7 5.94l3.72-3.72a.75.75 0 1 1 1.06 1.06L8.06 7l3.72 3.72a.75.75 0 1 1-1.06 1.06L7 8.06l-3.72 3.72a.75.75 0 0 1-1.06-1.06L5.94 7 2.22 3.28a.75.75 0 0 1 0-1.06z"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <label class="form-label">Tên thói quen *</label>
+          <input type="text" id="habit-name" class="form-input" placeholder="vd: Đọc sách 20 phút..." maxlength="60" />
+
+          <label class="form-label">Mô tả</label>
+          <input type="text" id="habit-desc" class="form-input" placeholder="Mô tả ngắn (không bắt buộc)..." maxlength="100" />
+
+          <label class="form-label">Icon</label>
+          <div class="emoji-picker" id="emoji-picker"></div>
+
+          <label class="form-label">Màu sắc</label>
+          <div class="color-picker" id="color-picker"></div>
+
+          <label class="form-label">Lặp lại</label>
+          <div class="days-picker" id="days-picker">
+            <button class="day-btn active" data-day="0">CN</button>
+            <button class="day-btn active" data-day="1">T2</button>
+            <button class="day-btn active" data-day="2">T3</button>
+            <button class="day-btn active" data-day="3">T4</button>
+            <button class="day-btn active" data-day="4">T5</button>
+            <button class="day-btn active" data-day="5">T6</button>
+            <button class="day-btn active" data-day="6">T7</button>
+          </div>
+
+          <label class="form-label">Mục tiêu / ngày</label>
+          <div class="goal-input-wrap">
+            <button class="num-btn" id="goal-minus">−</button>
+            <input type="number" id="habit-goal" value="1" min="1" max="99" />
+            <button class="num-btn" id="goal-plus">+</button>
+            <span class="goal-unit">lần</span>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn-ghost" id="modal-cancel">Hủy</button>
+          <button class="btn-primary" id="modal-save">Lưu thói quen</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Confirm delete -->
+    <div class="modal-backdrop" id="confirm-backdrop">
+      <div class="modal confirm-modal">
+        <div class="modal-header">
+          <div class="modal-title">Xóa thói quen?</div>
+        </div>
+        <div class="modal-body">
+          <p style="color: var(--text-2); font-size: 14px">Tất cả dữ liệu của thói quen này sẽ bị xóa vĩnh viễn.</p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-ghost" id="confirm-cancel">Hủy</button>
+          <button class="btn-danger" id="confirm-delete">Xóa</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast-container" id="toasts"></div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
