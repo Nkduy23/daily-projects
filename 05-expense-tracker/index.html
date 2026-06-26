@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spendo — Quản lý chi tiêu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <!-- Nav -->
+    <nav>
+      <div class="nav-logo">
+        <div class="nav-logo-mark">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+            <path
+              d="M7 1a6 6 0 1 0 0 12A6 6 0 0 0 7 1zM3.5 7.75A.75.75 0 0 1 4.25 7H6V5.75a.75.75 0 0 1 1.5 0V7h.25a1.75 1.75 0 1 1 0 3.5H7v.75a.75.75 0 0 1-1.5 0V10.5H4.25A.75.75 0 0 1 4.25 9H6V8.5H4.25a.75.75 0 0 1-.75-.75zM7 8.5v1h.75a.25.25 0 0 0 0-.5L7 8.5z"
+            />
+          </svg>
+        </div>
+        Spendo
+      </div>
+      <div class="nav-period" id="nav-period">
+        <button class="period-btn" id="prev-period">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M8.5 3L4.5 7l4 4" /></svg>
+        </button>
+        <span id="period-label">Tháng này</span>
+        <button class="period-btn" id="next-period">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor"><path d="M5.5 3L9.5 7l-4 4" /></svg>
+        </button>
+      </div>
+      <div class="nav-right">
+        <button class="nav-btn secondary" id="export-btn">
+          <svg width="13" height="13" viewBox="0 0 14 14" fill="currentColor">
+            <path
+              d="M7 1a.75.75 0 0 1 .75.75V8.44l1.72-1.72a.75.75 0 1 1 1.06 1.06l-3 3a.75.75 0 0 1-1.06 0l-3-3a.75.75 0 0 1 1.06-1.06L6.25 8.44V1.75A.75.75 0 0 1 7 1zM1.5 11.25a.75.75 0 0 1 .75-.75h9.5a.75.75 0 0 1 0 1.5H2.25a.75.75 0 0 1-.75-.75z"
+            />
+          </svg>
+          Xuất CSV
+        </button>
+        <button class="nav-btn primary" id="add-btn">
+          <svg width="13" height="13" viewBox="0 0 14 14" fill="currentColor">
+            <path d="M7 1a.75.75 0 0 1 .75.75v4.5h4.5a.75.75 0 0 1 0 1.5h-4.5v4.5a.75.75 0 0 1-1.5 0v-4.5h-4.5a.75.75 0 0 1 0-1.5h4.5v-4.5A.75.75 0 0 1 7 1z" />
+          </svg>
+          Thêm giao dịch
+        </button>
+      </div>
+    </nav>
+
+    <div class="page">
+      <!-- TOP: summary cards -->
+      <div class="summary-row">
+        <div class="summary-card income">
+          <div class="summary-icon">↑</div>
+          <div class="summary-body">
+            <div class="summary-label">Thu nhập</div>
+            <div class="summary-amount" id="total-income">0 ₫</div>
+          </div>
+        </div>
+        <div class="summary-card expense">
+          <div class="summary-icon">↓</div>
+          <div class="summary-body">
+            <div class="summary-label">Chi tiêu</div>
+            <div class="summary-amount" id="total-expense">0 ₫</div>
+          </div>
+        </div>
+        <div class="summary-card balance">
+          <div class="summary-icon">=</div>
+          <div class="summary-body">
+            <div class="summary-label">Số dư</div>
+            <div class="summary-amount" id="total-balance">0 ₫</div>
+          </div>
+        </div>
+        <div class="summary-card transactions">
+          <div class="summary-icon">#</div>
+          <div class="summary-body">
+            <div class="summary-label">Giao dịch</div>
+            <div class="summary-amount" id="total-txn">0</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="main-grid">
+        <!-- LEFT col -->
+        <div class="left-col">
+          <!-- Donut chart -->
+          <div class="card chart-card">
+            <div class="card-header-row">
+              <div class="card-title">Chi tiêu theo danh mục</div>
+              <div class="chart-toggle">
+                <button class="toggle-tab active" data-type="expense">Chi tiêu</button>
+                <button class="toggle-tab" data-type="income">Thu nhập</button>
+              </div>
+            </div>
+            <div class="chart-wrap">
+              <svg class="donut-svg" viewBox="0 0 160 160" id="donut-svg">
+                <circle cx="80" cy="80" r="60" fill="none" stroke="var(--surface-2)" stroke-width="22" />
+              </svg>
+              <div class="donut-center" id="donut-center">
+                <div class="donut-total" id="donut-total">0 ₫</div>
+                <div class="donut-label">tổng</div>
+              </div>
+            </div>
+            <div class="legend" id="chart-legend"></div>
+          </div>
+
+          <!-- Daily trend bar chart -->
+          <div class="card">
+            <div class="card-title">Chi tiêu theo ngày</div>
+            <div class="bar-chart" id="daily-bars"></div>
+            <div class="bar-labels" id="daily-labels"></div>
+          </div>
+        </div>
+
+        <!-- RIGHT col -->
+        <div class="right-col">
+          <!-- Filter + search -->
+          <div class="txn-toolbar">
+            <div class="search-wrap">
+              <svg class="search-icon" width="13" height="13" viewBox="0 0 14 14" fill="currentColor">
+                <path fill-rule="evenodd" d="M6 1a5 5 0 1 0 3.197 8.906l2.45 2.45a.75.75 0 1 0 1.06-1.06l-2.45-2.45A5 5 0 0 0 6 1zM2.5 6a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z" clip-rule="evenodd" />
+              </svg>
+              <input type="text" id="search-input" class="search-input" placeholder="Tìm giao dịch..." />
+            </div>
+            <div class="filter-chips" id="filter-chips">
+              <button class="fchip active" data-cat="all">Tất cả</button>
+            </div>
+          </div>
+
+          <!-- Transaction list -->
+          <div class="txn-list" id="txn-list"></div>
+
+          <!-- Empty -->
+          <div class="txn-empty hidden" id="txn-empty">
+            <div style="font-size: 32px; margin-bottom: 10px">💸</div>
+            <div class="empty-title">Chưa có giao dịch nào</div>
+            <div class="empty-sub">Thêm giao dịch đầu tiên để bắt đầu theo dõi!</div>
+            <button class="nav-btn primary" style="margin-top: 16px" id="empty-add-btn">
+              <svg width="13" height="13" viewBox="0 0 14 14" fill="currentColor">
+                <path d="M7 1a.75.75 0 0 1 .75.75v4.5h4.5a.75.75 0 0 1 0 1.5h-4.5v4.5a.75.75 0 0 1-1.5 0v-4.5h-4.5a.75.75 0 0 1 0-1.5h4.5v-4.5A.75.75 0 0 1 7 1z" />
+              </svg>
+              Thêm giao dịch
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add/Edit modal -->
+    <div class="modal-backdrop" id="modal-backdrop">
+      <div class="modal">
+        <div class="modal-header">
+          <div class="modal-title" id="modal-title">Thêm giao dịch</div>
+          <button class="icon-btn" id="modal-close">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+              <path
+                d="M2.22 2.22a.75.75 0 0 1 1.06 0L7 5.94l3.72-3.72a.75.75 0 1 1 1.06 1.06L8.06 7l3.72 3.72a.75.75 0 1 1-1.06 1.06L7 8.06l-3.72 3.72a.75.75 0 0 1-1.06-1.06L5.94 7 2.22 3.28a.75.75 0 0 1 0-1.06z"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <!-- Type toggle -->
+          <div class="type-toggle" id="type-toggle">
+            <button class="type-btn active" data-type="expense">Chi tiêu</button>
+            <button class="type-btn" data-type="income">Thu nhập</button>
+          </div>
+
+          <label class="form-label">Số tiền *</label>
+          <div class="amount-wrap">
+            <span class="amount-prefix">₫</span>
+            <input type="text" id="txn-amount" class="form-input amount-input" placeholder="0" inputmode="numeric" />
+          </div>
+
+          <label class="form-label">Mô tả *</label>
+          <input type="text" id="txn-desc" class="form-input" placeholder="vd: Ăn trưa, Cà phê..." maxlength="80" />
+
+          <label class="form-label">Danh mục</label>
+          <div class="cat-grid" id="cat-grid"></div>
+
+          <label class="form-label">Ngày</label>
+          <input type="date" id="txn-date" class="form-input" />
+
+          <label class="form-label">Ghi chú</label>
+          <input type="text" id="txn-note" class="form-input" placeholder="Ghi chú (không bắt buộc)..." maxlength="120" />
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn-ghost" id="modal-cancel">Hủy</button>
+          <button class="btn-primary" id="modal-save">Lưu</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast-container" id="toasts"></div>
+    <script src="./script.js"></script>
+  </body>
+</html>

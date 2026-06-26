@@ -50,10 +50,10 @@ const PROJECTS = [
     title: "Expense Tracker",
     desc: "Quản lý chi tiêu cá nhân với biểu đồ phân loại.",
     langs: ["html", "css", "js"],
-    status: "planned",
-    file: null,
+    status: "done",
+    file: "/05-expense-tracker/index.html",
     accent: "#E67E22",
-    date: null,
+    date: "2026-06-26",
   },
   {
     day: 6,
