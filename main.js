@@ -61,10 +61,10 @@ const PROJECTS = [
     title: "BMI Calculator",
     desc: "Tính chỉ số BMI với visual indicator và gợi ý sức khoẻ.",
     langs: ["html", "css", "js"],
-    status: "planned",
-    file: null,
+    status: "done",
+    file: "/06-bmi-calculator/index.html",
     accent: "#16A085",
-    date: null,
+    date: "2026-06-27",
   },
   {
     day: 7,
