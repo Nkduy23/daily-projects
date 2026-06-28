@@ -83,10 +83,10 @@ const PROJECTS = [
     title: "Password Generator",
     desc: "Tạo mật khẩu mạnh với tùy chọn ký tự và strength meter.",
     langs: ["html", "css", "js"],
-    status: "planned",
-    file: null,
+    status: "done",
+    file: "/08-password-generator/index.html",
     accent: "#1A1916",
-    date: null,
+    date: "2026-06-29",
   },
   {
     day: 9,
