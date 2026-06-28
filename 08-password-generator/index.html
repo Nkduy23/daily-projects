@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PassGen — Tạo mật khẩu mạnh</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="nav-logo">
+        <div class="nav-logo-mark">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+            <path d="M7 1a3 3 0 0 0-3 3v1H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V6a1 1 0 0 0-1-1h-1V4a3 3 0 0 0-3-3zm2 4V4a2 2 0 1 0-4 0v1h4zm-3 3a1 1 0 1 1 2 0v2a1 1 0 1 1-2 0V8z" />
+          </svg>
+        </div>
+        PassGen
+      </div>
+      <div class="nav-tagline">Tạo mật khẩu mạnh & an toàn</div>
+    </nav>
+
+    <div class="page">
+      <div class="main-layout">
+        <!-- LEFT: Generator -->
+        <div class="gen-col">
+          <!-- Output card -->
+          <div class="card output-card">
+            <div class="output-wrap" id="output-wrap">
+              <div class="password-display" id="password-display">
+                <span class="pw-placeholder">Nhấn tạo để bắt đầu...</span>
+              </div>
+              <div class="output-actions">
+                <button class="icon-btn" id="copy-btn" title="Sao chép (Ctrl+C)">
+                  <svg width="15" height="15" viewBox="0 0 15 15" fill="currentColor">
+                    <path
+                      d="M1 9.5A1.5 1.5 0 0 0 2.5 11H3v.5A1.5 1.5 0 0 0 4.5 13h7A1.5 1.5 0 0 0 13 11.5v-7A1.5 1.5 0 0 0 11.5 3H11V2.5A1.5 1.5 0 0 0 9.5 1h-7A1.5 1.5 0 0 0 1 2.5v7zm1-7A.5.5 0 0 1 2.5 2h7a.5.5 0 0 1 .5.5V3H4.5A1.5 1.5 0 0 0 3 4.5V10h-.5A.5.5 0 0 1 2 9.5v-7zm2 2A.5.5 0 0 1 4.5 4h7a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-7z"
+                    />
+                  </svg>
+                </button>
+                <button class="icon-btn" id="refresh-btn" title="Tạo lại (Space)">
+                  <svg width="15" height="15" viewBox="0 0 15 15" fill="currentColor">
+                    <path d="M1.5 7.5a6 6 0 0 1 9.927-4.547.5.5 0 0 0 .646-.765A7 7 0 1 0 14 7.5a.5.5 0 0 0-1 0 6 6 0 1 1-11.5 0z" />
+                    <path d="M13.854 1.146a.5.5 0 0 0-.707 0L11.5 2.793V1.5a.5.5 0 0 0-1 0v2.707a.5.5 0 0 0 .5.5H13.7a.5.5 0 0 0 0-1h-1.293l1.447-1.447a.5.5 0 0 0 0-.707z" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Strength meter -->
+            <div class="strength-wrap">
+              <div class="strength-bars" id="strength-bars">
+                <div class="sbar"></div>
+                <div class="sbar"></div>
+                <div class="sbar"></div>
+                <div class="sbar"></div>
+                <div class="sbar"></div>
+              </div>
+              <span class="strength-label" id="strength-label">—</span>
+            </div>
+          </div>
+
+          <!-- Options card -->
+          <div class="card options-card">
+            <div class="card-title">Tùy chỉnh</div>
+
+            <!-- Length -->
+            <div class="option-row">
+              <div class="option-label">
+                <span>Độ dài</span>
+                <span class="option-val" id="length-val">16</span>
+              </div>
+              <input type="range" class="slider" id="length-slider" min="4" max="128" value="16" />
+            </div>
+
+            <!-- Quantity -->
+            <div class="option-row">
+              <div class="option-label">
+                <span>Số lượng</span>
+                <span class="option-val" id="qty-val">1</span>
+              </div>
+              <input type="range" class="slider" id="qty-slider" min="1" max="20" value="1" />
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Character sets -->
+            <div class="option-section-label">Bộ ký tự</div>
+
+            <label class="checkbox-row" id="chk-upper">
+              <div class="custom-checkbox active" data-key="upper">
+                <svg class="chk-icon" width="10" height="10" viewBox="0 0 10 10">
+                  <polyline points="1.5,5 4,7.5 8.5,2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                </svg>
+              </div>
+              <div class="chk-info">
+                <span class="chk-label">Chữ hoa</span>
+                <span class="chk-sample">A B C … Z</span>
+              </div>
+            </label>
+
+            <label class="checkbox-row" id="chk-lower">
+              <div class="custom-checkbox active" data-key="lower">
+                <svg class="chk-icon" width="10" height="10" viewBox="0 0 10 10">
+                  <polyline points="1.5,5 4,7.5 8.5,2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                </svg>
+              </div>
+              <div class="chk-info">
+                <span class="chk-label">Chữ thường</span>
+                <span class="chk-sample">a b c … z</span>
+              </div>
+            </label>
+
+            <label class="checkbox-row" id="chk-numbers">
+              <div class="custom-checkbox active" data-key="numbers">
+                <svg class="chk-icon" width="10" height="10" viewBox="0 0 10 10">
+                  <polyline points="1.5,5 4,7.5 8.5,2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                </svg>
+              </div>
+              <div class="chk-info">
+                <span class="chk-label">Số</span>
+                <span class="chk-sample">0 1 2 … 9</span>
+              </div>
+            </label>
+
+            <label class="checkbox-row" id="chk-symbols">
+              <div class="custom-checkbox" data-key="symbols">
+                <svg class="chk-icon" width="10" height="10" viewBox="0 0 10 10">
+                  <polyline points="1.5,5 4,7.5 8.5,2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                </svg>
+              </div>
+              <div class="chk-info">
+                <span class="chk-label">Ký tự đặc biệt</span>
+                <span class="chk-sample">! @ # $ % ^ &</span>
+              </div>
+            </label>
+
+            <label class="checkbox-row" id="chk-similar">
+              <div class="custom-checkbox" data-key="similar">
+                <svg class="chk-icon" width="10" height="10" viewBox="0 0 10 10">
+                  <polyline points="1.5,5 4,7.5 8.5,2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                </svg>
+              </div>
+              <div class="chk-info">
+                <span class="chk-label">Tránh ký tự dễ nhầm</span>
+                <span class="chk-sample">Bỏ: 0 O l 1 I</span>
+              </div>
+            </label>
+
+            <div class="divider"></div>
+
+            <!-- Mode -->
+            <div class="option-section-label">Chế độ</div>
+            <div class="mode-grid">
+              <button class="mode-btn" data-mode="pin">🔢 PIN</button>
+              <button class="mode-btn" data-mode="memorable">💭 Dễ nhớ</button>
+              <button class="mode-btn" data-mode="passphrase">📖 Cụm từ</button>
+              <button class="mode-btn" data-mode="hex">🔣 Hex</button>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Exclude chars -->
+            <div class="option-label"><span>Loại trừ ký tự</span></div>
+            <input type="text" class="exclude-input" id="exclude-input" placeholder="vd: @#$..." />
+
+            <button class="generate-btn" id="generate-btn">
+              <svg width="15" height="15" viewBox="0 0 15 15" fill="currentColor">
+                <path d="M1.5 7.5a6 6 0 0 1 9.927-4.547.5.5 0 0 0 .646-.765A7 7 0 1 0 14 7.5a.5.5 0 0 0-1 0 6 6 0 1 1-11.5 0z" />
+                <path d="M13.854 1.146a.5.5 0 0 0-.707 0L11.5 2.793V1.5a.5.5 0 0 0-1 0v2.707a.5.5 0 0 0 .5.5H13.7a.5.5 0 0 0 0-1h-1.293l1.447-1.447a.5.5 0 0 0 0-.707z" />
+              </svg>
+              Tạo mật khẩu
+            </button>
+          </div>
+        </div>
+
+        <!-- RIGHT: Info + History -->
+        <div class="info-col">
+          <!-- Entropy card -->
+          <div class="card entropy-card" id="entropy-card">
+            <div class="card-title">Phân tích bảo mật</div>
+            <div class="entropy-grid" id="entropy-grid">
+              <div class="entropy-item">
+                <div class="entropy-val" id="e-entropy">—</div>
+                <div class="entropy-lbl">Entropy (bits)</div>
+              </div>
+              <div class="entropy-item">
+                <div class="entropy-val" id="e-pool">—</div>
+                <div class="entropy-lbl">Cỡ bộ ký tự</div>
+              </div>
+              <div class="entropy-item">
+                <div class="entropy-val" id="e-crack">—</div>
+                <div class="entropy-lbl">Thời gian crack</div>
+              </div>
+              <div class="entropy-item">
+                <div class="entropy-val" id="e-combos">—</div>
+                <div class="entropy-lbl">Tổ hợp</div>
+              </div>
+            </div>
+
+            <!-- Tips -->
+            <div class="tips-list" id="tips-list"></div>
+          </div>
+
+          <!-- Password history -->
+          <div class="card">
+            <div class="card-header-row">
+              <div class="card-title">Lịch sử tạo</div>
+              <button class="clear-btn" id="clear-history">Xóa</button>
+            </div>
+            <div class="pw-history" id="pw-history">
+              <div class="history-empty">Chưa có mật khẩu nào được tạo</div>
+            </div>
+          </div>
+
+          <!-- Tips card -->
+          <div class="card tips-static-card">
+            <div class="card-title">💡 Mẹo bảo mật</div>
+            <ul class="static-tips">
+              <li>Dùng mật khẩu riêng cho mỗi tài khoản</li>
+              <li>Độ dài ≥ 16 ký tự là tiêu chuẩn tối thiểu hiện nay</li>
+              <li>Kết hợp chữ hoa, thường, số và ký tự đặc biệt</li>
+              <li>Dùng password manager để lưu trữ an toàn</li>
+              <li>Bật xác thực 2 bước (2FA) cho tài khoản quan trọng</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast-container" id="toasts"></div>
+    <script src="./script.js"></script>
+  </body>
+</html>
