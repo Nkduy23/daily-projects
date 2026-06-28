@@ -72,10 +72,10 @@ const PROJECTS = [
     title: "Unit Converter",
     desc: "Chuyển đổi đơn vị đo lường tổng hợp: nhiệt độ, độ dài, khối lượng.",
     langs: ["html", "css", "js"],
-    status: "planned",
-    file: null,
+    status: "done",
+    file: "/07-unit-converter/index.html",
     accent: "#2980B9",
-    date: null,
+    date: "2026-06-28",
   },
   {
     day: 8,
