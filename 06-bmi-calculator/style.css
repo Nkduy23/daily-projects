@@ -251,29 +251,34 @@ nav {
   overflow: hidden; gap: 2px; margin-bottom: 4px;
 }
 
-.scale-seg {
-  height: 100%; font-size: 0; border-radius: 2px;
-  transition: flex var(--tr);
+.scale-seg { height: 100%; border-radius: 2px; }
+
+/* Labels at exact BMI positions */
+.scale-labels-abs {
+  position: relative; height: 16px; margin-bottom: 2px;
 }
 
-.scale-labels {
-  display: flex; justify-content: space-between;
+.scale-labels-abs span {
+  position: absolute;
   font-size: 10px; font-weight: 600; color: var(--text-3);
-  padding: 0 2px;
+  transform: translateX(-50%);
+  white-space: nowrap;
 }
+
+.scale-labels-abs span:first-child { transform: translateX(0); }
+.scale-labels-abs span:last-child  { transform: translateX(-100%); }
 
 .scale-pointer-wrap {
-  position: relative; height: 12px; margin-top: 2px;
+  position: relative; height: 12px;
 }
 
 .scale-pointer {
   position: absolute;
   width: 2px; height: 10px;
   background: var(--text-1);
-  border-radius: 1px;
-  top: 0;
+  border-radius: 1px; top: 0;
   transform: translateX(-50%);
-  transition: left 0.6s cubic-bezier(0.34,1.56,0.64,1);
+  transition: left 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* Stats grid */

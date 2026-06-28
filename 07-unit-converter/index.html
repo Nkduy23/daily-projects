@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Converto — Chuyển đổi đơn vị</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="nav-logo">
+        <div class="nav-logo-mark">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+            <path
+              d="M4.5 2.5a.5.5 0 0 0-1 0v7.793L2.354 9.146a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l1.5-1.5a.5.5 0 0 0-.708-.708L4.5 10.293V2.5zm5 7.207V1.707a.5.5 0 0 0-1 0v8.086l-.646-.647a.5.5 0 0 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0l1.5-1.5a.5.5 0 0 0-.708-.708L9.5 9.707z"
+            />
+          </svg>
+        </div>
+        Converto
+      </div>
+      <div class="nav-subtitle">Chuyển đổi đơn vị đo lường</div>
+    </nav>
+
+    <div class="page">
+      <!-- Category tabs -->
+      <div class="cat-tabs" id="cat-tabs"></div>
+
+      <!-- Main converter -->
+      <div class="converter-layout">
+        <!-- Converter card -->
+        <div class="converter-card" id="converter-card">
+          <div class="conv-header">
+            <div class="conv-category-label" id="conv-category-label"></div>
+            <button class="swap-btn" id="swap-btn" title="Hoán đổi">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <path
+                  d="M1 11.5a.5.5 0 0 0 .5.5h11.793l-3.147 3.146a.5.5 0 0 0 .708.708l4-4a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 11H1.5a.5.5 0 0 0-.5.5zm14-7a.5.5 0 0 1-.5.5H2.707l3.147 3.146a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 4H14.5a.5.5 0 0 1 .5.5z"
+                />
+              </svg>
+            </button>
+          </div>
+
+          <!-- From -->
+          <div class="unit-block">
+            <div class="unit-select-wrap">
+              <select class="unit-select" id="from-unit"></select>
+            </div>
+            <input type="text" class="unit-input" id="from-input" placeholder="0" inputmode="decimal" />
+          </div>
+
+          <div class="equals-divider">
+            <div class="equals-line"></div>
+            <span class="equals-sign">=</span>
+            <div class="equals-line"></div>
+          </div>
+
+          <!-- To -->
+          <div class="unit-block">
+            <div class="unit-select-wrap">
+              <select class="unit-select" id="to-unit"></select>
+            </div>
+            <input type="text" class="unit-input" id="to-input" placeholder="0" inputmode="decimal" />
+          </div>
+
+          <!-- Formula hint -->
+          <div class="formula-hint" id="formula-hint"></div>
+        </div>
+
+        <!-- Right panel -->
+        <div class="right-panel">
+          <!-- Quick reference all units -->
+          <div class="card ref-card">
+            <div class="card-title" id="ref-title">Bảng quy đổi nhanh</div>
+            <div class="ref-table" id="ref-table"></div>
+          </div>
+
+          <!-- History -->
+          <div class="card">
+            <div class="card-header-row">
+              <div class="card-title">Lịch sử</div>
+              <button class="clear-btn" id="clear-history">Xóa</button>
+            </div>
+            <div class="history-list" id="history-list">
+              <div class="history-empty">Chưa có lịch sử chuyển đổi</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- All categories overview -->
+      <div class="all-cats-section">
+        <div class="section-title">Tất cả danh mục</div>
+        <div class="all-cats-grid" id="all-cats-grid"></div>
+      </div>
+    </div>
+
+    <div class="toast-container" id="toasts"></div>
+    <script src="./script.js"></script>
+  </body>
+</html>

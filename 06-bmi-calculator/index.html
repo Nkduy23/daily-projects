@@ -123,13 +123,22 @@
 
           <!-- Scale bar -->
           <div class="scale-bar-wrap">
+            <!-- Total range: 40-16=24. Ratios: 2.5/24, 6.5/24, 5/24, 10/24 -->
             <div class="scale-bar">
-              <div class="scale-seg" style="background: #60a5fa; flex: 2.5">Thiếu cân</div>
-              <div class="scale-seg" style="background: #4ade80; flex: 2.5">Bình thường</div>
-              <div class="scale-seg" style="background: #fbbf24; flex: 2.5">Thừa cân</div>
-              <div class="scale-seg" style="background: #f87171; flex: 2.5">Béo phì</div>
+              <div class="scale-seg" style="background: #60a5fa; flex: 2.5"></div>
+              <div class="scale-seg" style="background: #4ade80; flex: 6.5"></div>
+              <div class="scale-seg" style="background: #fbbf24; flex: 5"></div>
+              <div class="scale-seg" style="background: #f87171; flex: 10"></div>
             </div>
-            <div class="scale-labels"><span>16</span><span>18.5</span><span>25</span><span>30</span><span>40</span></div>
+            <!-- Labels at exact % positions: (val-16)/24*100 -->
+            <!-- 16→0%, 18.5→10.4%, 25→37.5%, 30→58.3%, 40→100% -->
+            <div class="scale-labels-abs">
+              <span style="left: 0%">16</span>
+              <span style="left: 10.4%">18.5</span>
+              <span style="left: 37.5%">25</span>
+              <span style="left: 58.3%">30</span>
+              <span style="left: 100%">40</span>
+            </div>
             <div class="scale-pointer-wrap">
               <div class="scale-pointer" id="scale-pointer"></div>
             </div>
