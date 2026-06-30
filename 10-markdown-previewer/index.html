@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Markly — Markdown Previewer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <!-- Nav -->
+    <nav>
+      <div class="nav-logo">
+        <div class="nav-logo-mark">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+            <path
+              d="M1.5 2A1.5 1.5 0 0 0 0 3.5v7A1.5 1.5 0 0 0 1.5 12h11A1.5 1.5 0 0 0 14 10.5v-7A1.5 1.5 0 0 0 12.5 2h-11zm1.25 3h1.5l1.25 2 1.25-2h1.5l-2 3 2 3H7.25L6 9 4.75 11H3.25l2-3-2-3zm6.5 0h1.5v4.5H12V9.5h-1.25v-1H9.5V5z"
+            />
+          </svg>
+        </div>
+        Markly
+      </div>
+
+      <div class="nav-center">
+        <!-- View mode -->
+        <div class="view-toggle" id="view-toggle">
+          <button class="view-btn" data-view="editor" title="Chỉ soạn thảo">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+              <path
+                d="M1 2.5A.5.5 0 0 1 1.5 2h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 1 2.5zm0 3A.5.5 0 0 1 1.5 5h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 1 5.5zm0 3A.5.5 0 0 1 1.5 8h11a.5.5 0 0 1 0 1h-11A.5.5 0 0 1 1 8.5zm0 3A.5.5 0 0 1 1.5 11h5a.5.5 0 0 1 0 1h-5A.5.5 0 0 1 1 11.5z"
+              />
+            </svg>
+            Editor
+          </button>
+          <button class="view-btn active" data-view="split" title="Split view">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+              <path d="M6.5 2h-5A.5.5 0 0 0 1 2.5v9a.5.5 0 0 0 .5.5h5v-10zm1 0v10h5a.5.5 0 0 0 .5-.5v-9A.5.5 0 0 0 12.5 2h-5z" />
+            </svg>
+            Split
+          </button>
+          <button class="view-btn" data-view="preview" title="Chỉ xem trước">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+              <path d="M7 3C4 3 1.5 5.5 0 7c1.5 1.5 4 4 7 4s5.5-2.5 7-4c-1.5-1.5-4-4-7-4zm0 6.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z" />
+            </svg>
+            Preview
+          </button>
+        </div>
+      </div>
+
+      <div class="nav-right">
+        <!-- Toolbar -->
+        <div class="toolbar" id="toolbar">
+          <button class="tool-btn" data-action="bold" title="Bold (Ctrl+B)"><strong>B</strong></button>
+          <button class="tool-btn italic" data-action="italic" title="Italic (Ctrl+I)"><em>I</em></button>
+          <button class="tool-btn" data-action="strikethrough" title="Gạch ngang"><s>S</s></button>
+          <div class="tool-sep"></div>
+          <button class="tool-btn" data-action="h1" title="Heading 1">H1</button>
+          <button class="tool-btn" data-action="h2" title="Heading 2">H2</button>
+          <button class="tool-btn" data-action="h3" title="Heading 3">H3</button>
+          <div class="tool-sep"></div>
+          <button class="tool-btn" data-action="ul" title="Danh sách">
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="currentColor">
+              <circle cx="1.5" cy="3" r="1.2" />
+              <rect x="4" y="2.4" width="9" height="1.2" rx=".6" />
+              <circle cx="1.5" cy="6.5" r="1.2" />
+              <rect x="4" y="5.9" width="9" height="1.2" rx=".6" />
+              <circle cx="1.5" cy="10" r="1.2" />
+              <rect x="4" y="9.4" width="9" height="1.2" rx=".6" />
+            </svg>
+          </button>
+          <button class="tool-btn" data-action="ol" title="Danh sách số">
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="currentColor">
+              <text x="0" y="4" font-size="4.5" font-family="monospace">1.</text>
+              <rect x="4" y="2.4" width="9" height="1.2" rx=".6" />
+              <text x="0" y="7.5" font-size="4.5" font-family="monospace">2.</text>
+              <rect x="4" y="5.9" width="9" height="1.2" rx=".6" />
+              <text x="0" y="11" font-size="4.5" font-family="monospace">3.</text>
+              <rect x="4" y="9.4" width="9" height="1.2" rx=".6" />
+            </svg>
+          </button>
+          <button class="tool-btn" data-action="blockquote" title="Trích dẫn">
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="currentColor">
+              <path
+                d="M3.5 1.5C2.1 1.5 1 2.6 1 4S2.1 6.5 3.5 6.5c.3 0 .5.2.5.5C4 8.4 3.3 9.5 2 10.5l.8.8C4.6 10 5.5 8 5.5 6.5c0-1.4-1-2.5-2-3V1.5zm6 0c-1.4 0-2.5 1.1-2.5 2.5S8.1 6.5 9.5 6.5c.3 0 .5.2.5.5C10 8.4 9.3 9.5 8 10.5l.8.8C10.6 10 11.5 8 11.5 6.5c0-1.4-1-2.5-2-3V1.5z"
+              />
+            </svg>
+          </button>
+          <button class="tool-btn" data-action="code" title="Inline code">&lt;/&gt;</button>
+          <button class="tool-btn" data-action="codeblock" title="Code block">
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="currentColor"><path d="M4.5 3.5 2 6.5l2.5 3-.8.8L1 6.5l3.2-3.8.3.8zm4 0 .8-.8 3.2 3.8-3.2 3.8-.8-.8L11 6.5l-2.5-3z" /></svg>
+          </button>
+          <button class="tool-btn" data-action="link" title="Link">
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="currentColor">
+              <path
+                d="M6.354 5.5H11a.5.5 0 0 1 0 1H6.354l.853.854a.5.5 0 0 1-.707.707L5 7.061V11a.5.5 0 0 1-1 0V7.06L2.854 8.06a.5.5 0 0 1-.707-.707L3.5 6l-1.354-1.354a.5.5 0 0 1 .707-.707L4 4.939V1a.5.5 0 0 1 1 0v3.94l1.146-1.147a.5.5 0 0 1 .708.708L5.5 5.353V5.5z"
+              />
+            </svg>
+          </button>
+          <button class="tool-btn" data-action="table" title="Bảng">
+            <svg width="13" height="13" viewBox="0 0 13 13" fill="currentColor">
+              <path
+                fill-rule="evenodd"
+                d="M0 2a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v1h11V2a1 1 0 0 0-1-1H2zm10 3H1v1h11V4zm0 2H1v1h11V6zm0 2H1v1h11V8zm0 2H1v1h5v-1H1v1h5zm6 0h-4v1h4v-1z"
+                clip-rule="evenodd"
+              />
+            </svg>
+          </button>
+          <div class="tool-sep"></div>
+          <button class="tool-btn" data-action="hr" title="Đường ngang">—</button>
+        </div>
+
+        <div class="nav-actions">
+          <button class="nav-btn secondary" id="copy-md-btn">Sao chép</button>
+          <button class="nav-btn secondary" id="download-btn">Tải xuống</button>
+          <button class="nav-btn primary" id="save-btn">Lưu</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main -->
+    <div class="workspace" id="workspace">
+      <!-- Editor pane -->
+      <div class="pane editor-pane" id="editor-pane">
+        <div class="pane-header">
+          <span class="pane-label">Markdown</span>
+          <div class="editor-stats" id="editor-stats">0 từ · 0 dòng</div>
+        </div>
+        <textarea class="editor-textarea" id="editor" spellcheck="false" placeholder="Bắt đầu viết Markdown..."></textarea>
+      </div>
+
+      <!-- Divider -->
+      <div class="divider-bar" id="divider-bar"></div>
+
+      <!-- Preview pane -->
+      <div class="pane preview-pane" id="preview-pane">
+        <div class="pane-header">
+          <span class="pane-label">Preview</span>
+          <div class="preview-actions">
+            <button class="pane-action-btn" id="toc-btn" title="Mục lục">
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="currentColor">
+                <rect x="1" y="1.5" width="11" height="1.2" rx=".6" />
+                <rect x="3" y="4.4" width="9" height="1.2" rx=".6" />
+                <rect x="1" y="7.3" width="11" height="1.2" rx=".6" />
+                <rect x="3" y="10.1" width="9" height="1.2" rx=".6" />
+              </svg>
+              TOC
+            </button>
+          </div>
+        </div>
+        <!-- TOC panel -->
+        <div class="toc-panel hidden" id="toc-panel">
+          <div class="toc-title">Mục lục</div>
+          <div class="toc-list" id="toc-list"></div>
+        </div>
+        <div class="preview-content markdown-body" id="preview"></div>
+      </div>
+    </div>
+
+    <!-- Saved docs sidebar (slide-in) -->
+    <div class="docs-backdrop hidden" id="docs-backdrop"></div>
+    <div class="docs-sidebar hidden" id="docs-sidebar">
+      <div class="docs-header">
+        <div class="docs-title">Tài liệu đã lưu</div>
+        <button class="icon-btn" id="docs-close">✕</button>
+      </div>
+      <div class="docs-list" id="docs-list"></div>
+      <button class="docs-new-btn" id="docs-new-btn">+ Tài liệu mới</button>
+    </div>
+
+    <div class="toast-container" id="toasts"></div>
+    <script src="./script.js"></script>
+  </body>
+</html>

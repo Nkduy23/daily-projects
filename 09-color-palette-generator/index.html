@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Paletto — Color Palette Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="nav-logo">
+        <div class="nav-logo-mark" id="nav-logo-mark">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+            <path d="M7 1a6 6 0 1 0 5.659 8A2 2 0 0 0 9 7a2 2 0 0 0 2-2 2 2 0 0 0-2-2 2 2 0 0 0-2 2H5A2 2 0 0 0 3 7a2 2 0 0 0 2 2 2 2 0 0 0 2-2z" />
+          </svg>
+        </div>
+        Paletto
+      </div>
+
+      <div class="nav-controls">
+        <!-- Harmony mode -->
+        <div class="harmony-tabs" id="harmony-tabs">
+          <button class="harmony-tab active" data-harmony="analogous">Tương đồng</button>
+          <button class="harmony-tab" data-harmony="complementary">Bổ sung</button>
+          <button class="harmony-tab" data-harmony="triadic">Bộ ba</button>
+          <button class="harmony-tab" data-harmony="split">Phân đôi</button>
+          <button class="harmony-tab" data-harmony="tetradic">Bộ tứ</button>
+          <button class="harmony-tab" data-harmony="monochromatic">Đơn sắc</button>
+          <button class="harmony-tab" data-harmony="shades">Sắc độ</button>
+        </div>
+      </div>
+
+      <div class="nav-actions">
+        <button class="nav-btn secondary" id="random-btn" title="Màu ngẫu nhiên (Space)">
+          <svg width="13" height="13" viewBox="0 0 14 14" fill="currentColor">
+            <path
+              d="M4.5 6.5A.5.5 0 0 1 5 6h1.5V4.5a.5.5 0 0 1 1 0V6H9a.5.5 0 0 1 0 1H7.5v1.5a.5.5 0 0 1-1 0V7H5a.5.5 0 0 1-.5-.5zM2 4a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm6 6a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"
+            />
+          </svg>
+          Ngẫu nhiên
+        </button>
+        <button class="nav-btn primary" id="export-btn">
+          <svg width="13" height="13" viewBox="0 0 14 14" fill="currentColor">
+            <path d="M7 1a.75.75 0 0 1 .75.75V8.44l1.72-1.72a.75.75 0 1 1 1.06 1.06l-3 3a.75.75 0 0 1-1.06 0l-3-3a.75.75 0 0 1 1.06-1.06L6.25 8.44V1.75A.75.75 0 0 1 7 1z" />
+          </svg>
+          Xuất
+        </button>
+      </div>
+    </nav>
+
+    <div class="page">
+      <!-- Base color picker row -->
+      <div class="picker-row">
+        <div class="picker-card">
+          <div class="picker-label">Màu gốc</div>
+          <div class="picker-wrap">
+            <div class="color-swatch-btn" id="color-swatch-btn">
+              <div class="swatch-preview" id="swatch-preview"></div>
+            </div>
+            <input type="color" id="color-picker-input" value="#3B82F6" />
+            <input type="text" id="hex-text-input" class="hex-text" placeholder="#3B82F6" maxlength="7" />
+          </div>
+        </div>
+
+        <div class="picker-card">
+          <div class="picker-label">Số màu</div>
+          <div class="count-wrap">
+            <button class="count-btn" id="count-minus">−</button>
+            <span class="count-val" id="count-val">5</span>
+            <button class="count-btn" id="count-plus">+</button>
+          </div>
+        </div>
+
+        <div class="picker-card flex-grow">
+          <div class="picker-label">Tên palette</div>
+          <input type="text" id="palette-name" class="palette-name-input" placeholder="Tên palette..." maxlength="40" />
+        </div>
+
+        <div class="picker-card">
+          <div class="picker-label">Xem trước</div>
+          <div class="preview-mode-toggle">
+            <button class="preview-btn active" data-view="swatches" title="Swatches">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+                <rect x="1" y="1" width="5" height="5" rx="1" />
+                <rect x="8" y="1" width="5" height="5" rx="1" />
+                <rect x="1" y="8" width="5" height="5" rx="1" />
+                <rect x="8" y="8" width="5" height="5" rx="1" />
+              </svg>
+            </button>
+            <button class="preview-btn" data-view="strips" title="Strips">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+                <rect x="1" y="1" width="12" height="3" rx="1" />
+                <rect x="1" y="5.5" width="12" height="3" rx="1" />
+                <rect x="1" y="10" width="12" height="3" rx="1" />
+              </svg>
+            </button>
+            <button class="preview-btn" data-view="ui" title="UI preview">
+              <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+                <rect x="1" y="1" width="12" height="8" rx="1.5" fill="none" stroke="currentColor" stroke-width="1" />
+                <rect x="2" y="2.5" width="4" height="1.5" rx=".5" />
+                <rect x="8" y="10.5" width="5" height="2" rx="1" />
+                <rect x="1" y="10.5" width="5" height="2" rx="1" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Palette display -->
+      <div class="palette-display" id="palette-display"></div>
+
+      <!-- Color info bar -->
+      <div class="color-info-bar" id="color-info-bar"></div>
+
+      <!-- Saved palettes -->
+      <div class="saved-section">
+        <div class="saved-header">
+          <div class="section-title">Palette đã lưu</div>
+          <span class="saved-count" id="saved-count">0</span>
+        </div>
+        <div class="saved-grid" id="saved-grid">
+          <div class="saved-empty">Chưa có palette nào được lưu</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Export modal -->
+    <div class="modal-backdrop" id="export-modal">
+      <div class="modal">
+        <div class="modal-header">
+          <div class="modal-title">Xuất Palette</div>
+          <button class="icon-btn" id="modal-close">
+            <svg width="13" height="13" viewBox="0 0 14 14" fill="currentColor">
+              <path
+                d="M2.22 2.22a.75.75 0 0 1 1.06 0L7 5.94l3.72-3.72a.75.75 0 1 1 1.06 1.06L8.06 7l3.72 3.72a.75.75 0 1 1-1.06 1.06L7 8.06l-3.72 3.72a.75.75 0 0 1-1.06-1.06L5.94 7 2.22 3.28a.75.75 0 0 1 0-1.06z"
+              />
+            </svg>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="export-tabs" id="export-tabs">
+            <button class="export-tab active" data-fmt="hex">HEX</button>
+            <button class="export-tab" data-fmt="rgb">RGB</button>
+            <button class="export-tab" data-fmt="hsl">HSL</button>
+            <button class="export-tab" data-fmt="css">CSS Vars</button>
+            <button class="export-tab" data-fmt="tailwind">Tailwind</button>
+            <button class="export-tab" data-fmt="scss">SCSS</button>
+          </div>
+          <pre class="export-code" id="export-code"></pre>
+          <button class="btn-primary" id="copy-export-btn">Sao chép</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast-container" id="toasts"></div>
+    <script src="./script.js"></script>
+  </body>
+</html>
