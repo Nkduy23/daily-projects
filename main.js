@@ -116,10 +116,10 @@ const PROJECTS = [
     title: "Modal Component",
     desc: "Thư viện modal reusable với animation, stacking và accessibility.",
     langs: ["html", "css", "js"],
-    status: "planned",
-    file: null,
+    status: "done",
+    file: "/11-modal-component/index.html",
     accent: "#117A65",
-    date: null,
+    date: "2026-07-01",
   },
   {
     day: 12,

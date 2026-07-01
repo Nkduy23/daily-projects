@@ -1,0 +1,654 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modal System — Component Library</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="nav-logo">
+        <div class="nav-logo-mark">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+            <path d="M2 2a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H2zm1 3h8v1H3V5zm0 2.5h5v1H3v-1z" />
+          </svg>
+        </div>
+        Modal System
+      </div>
+      <div class="nav-tag">Component Library · Day 11</div>
+    </nav>
+
+    <div class="page">
+      <!-- Intro -->
+      <div class="page-intro">
+        <h1 class="page-title">Modal Component</h1>
+        <p class="page-desc">Thư viện modal reusable với đầy đủ variant, animation, accessibility và keyboard support.</p>
+      </div>
+
+      <!-- ── Section 1: Basic modals ── -->
+      <section class="section">
+        <div class="section-header">
+          <div class="section-title">Basic Modals</div>
+          <div class="section-sub">Các loại modal cơ bản</div>
+        </div>
+        <div class="demo-grid">
+          <div class="demo-card">
+            <div class="demo-label">Default</div>
+            <p class="demo-desc">Modal cơ bản với header, body, footer</p>
+            <button class="demo-btn" onclick="Modal.open('modal-default')">Mở modal</button>
+          </div>
+          <div class="demo-card">
+            <div class="demo-label">Small</div>
+            <p class="demo-desc">Modal nhỏ — thông báo, nhập liệu nhanh</p>
+            <button class="demo-btn" onclick="Modal.open('modal-small')">Mở modal</button>
+          </div>
+          <div class="demo-card">
+            <div class="demo-label">Large</div>
+            <p class="demo-desc">Modal lớn — nội dung nhiều, form phức tạp</p>
+            <button class="demo-btn" onclick="Modal.open('modal-large')">Mở modal</button>
+          </div>
+          <div class="demo-card">
+            <div class="demo-label">Fullscreen</div>
+            <p class="demo-desc">Modal fullscreen — editor, media viewer</p>
+            <button class="demo-btn" onclick="Modal.open('modal-fullscreen')">Mở modal</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Section 2: Alert modals ── -->
+      <section class="section">
+        <div class="section-header">
+          <div class="section-title">Alert & Confirm</div>
+          <div class="section-sub">Hộp thoại thông báo và xác nhận</div>
+        </div>
+        <div class="demo-grid">
+          <div class="demo-card">
+            <div class="demo-label status-success">✅ Success</div>
+            <p class="demo-desc">Thao tác hoàn thành thành công</p>
+            <button class="demo-btn success" onclick="Modal.alert('success', 'Thành công!', 'Tệp của bạn đã được tải lên thành công. Bạn có thể xem và chia sẻ ngay bây giờ.')">Mở modal</button>
+          </div>
+          <div class="demo-card">
+            <div class="demo-label status-warning">⚠️ Warning</div>
+            <p class="demo-desc">Cảnh báo người dùng về rủi ro</p>
+            <button class="demo-btn warning" onclick="Modal.alert('warning', 'Cảnh báo', 'Bạn sắp rời khỏi trang. Những thay đổi chưa lưu có thể bị mất.')">Mở modal</button>
+          </div>
+          <div class="demo-card">
+            <div class="demo-label status-error">❌ Error</div>
+            <p class="demo-desc">Thông báo lỗi cần xử lý</p>
+            <button class="demo-btn error" onclick="Modal.alert('error', 'Lỗi kết nối', 'Không thể kết nối đến máy chủ. Vui lòng kiểm tra kết nối mạng và thử lại.')">Mở modal</button>
+          </div>
+          <div class="demo-card">
+            <div class="demo-label status-info">ℹ️ Info</div>
+            <p class="demo-desc">Thông tin bổ sung cho người dùng</p>
+            <button class="demo-btn" onclick="Modal.alert('info', 'Thông tin', 'Phiên bản mới 2.0 đã ra mắt với nhiều tính năng cải tiến. Xem chi tiết để biết thêm.')">Mở modal</button>
+          </div>
+          <div class="demo-card">
+            <div class="demo-label status-error">🗑️ Confirm Delete</div>
+            <p class="demo-desc">Xác nhận hành động nguy hiểm</p>
+            <button
+              class="demo-btn error"
+              onclick="
+                Modal.confirm('Xóa tài khoản?', 'Hành động này không thể hoàn tác. Toàn bộ dữ liệu, lịch sử và cài đặt của bạn sẽ bị xóa vĩnh viễn.', {
+                  confirmText: 'Xóa vĩnh viễn',
+                  danger: true,
+                  onConfirm: () => toast('Đã xóa tài khoản'),
+                })
+              "
+            >
+              Mở modal
+            </button>
+          </div>
+          <div class="demo-card">
+            <div class="demo-label">💬 Confirm</div>
+            <p class="demo-desc">Xác nhận hành động thông thường</p>
+            <button
+              class="demo-btn"
+              onclick="
+                Modal.confirm('Lưu thay đổi?', 'Bạn có muốn lưu các thay đổi trước khi rời khỏi trang này không?', {
+                  confirmText: 'Lưu',
+                  cancelText: 'Không lưu',
+                  onConfirm: () => toast('Đã lưu!'),
+                  onCancel: () => toast('Bỏ qua thay đổi'),
+                })
+              "
+            >
+              Mở modal
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Section 3: Animations ── -->
+      <section class="section">
+        <div class="section-header">
+          <div class="section-title">Animations</div>
+          <div class="section-sub">Các kiểu animation khác nhau</div>
+        </div>
+        <div class="demo-grid">
+          <div class="demo-card">
+            <div class="demo-label">Fade + Scale</div>
+            <p class="demo-desc">Animation mặc định — mượt và nhẹ</p>
+            <button class="demo-btn" onclick="Modal.open('modal-anim-scale')">Xem demo</button>
+          </div>
+          <div class="demo-card">
+            <div class="demo-label">Slide Up</div>
+            <p class="demo-desc">Trượt từ dưới lên — mobile-friendly</p>
+            <button class="demo-btn" onclick="Modal.open('modal-anim-slide')">Xem demo</button>
+          </div>
+          <div class="demo-card">
+            <div class="demo-label">Zoom</div>
+            <p class="demo-desc">Phóng to từ tâm màn hình</p>
+            <button class="demo-btn" onclick="Modal.open('modal-anim-zoom')">Xem demo</button>
+          </div>
+          <div class="demo-card">
+            <div class="demo-label">Flip</div>
+            <p class="demo-desc">Lật 3D — hiệu ứng đặc biệt</p>
+            <button class="demo-btn" onclick="Modal.open('modal-anim-flip')">Xem demo</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Section 4: Special modals ── -->
+      <section class="section">
+        <div class="section-header">
+          <div class="section-title">Special Types</div>
+          <div class="section-sub">Modal cho các use case đặc biệt</div>
+        </div>
+        <div class="demo-grid">
+          <div class="demo-card">
+            <div class="demo-label">📋 Form Modal</div>
+            <p class="demo-desc">Form đăng nhập tích hợp trong modal</p>
+            <button class="demo-btn" onclick="Modal.open('modal-form')">Mở form</button>
+          </div>
+          <div class="demo-card">
+            <div class="demo-label">🖼️ Image Modal</div>
+            <p class="demo-desc">Lightbox xem ảnh toàn màn hình</p>
+            <button class="demo-btn" onclick="Modal.open('modal-image')">Xem ảnh</button>
+          </div>
+          <div class="demo-card">
+            <div class="demo-label">🔢 Stacked Modals</div>
+            <p class="demo-desc">Mở modal từ trong modal</p>
+            <button class="demo-btn" onclick="Modal.open('modal-stack-1')">Mở modal</button>
+          </div>
+          <div class="demo-card">
+            <div class="demo-label">📊 Scrollable</div>
+            <p class="demo-desc">Modal với nội dung dài scrollable</p>
+            <button class="demo-btn" onclick="Modal.open('modal-scroll')">Mở modal</button>
+          </div>
+          <div class="demo-card">
+            <div class="demo-label">⏱️ Auto-close</div>
+            <p class="demo-desc">Tự đóng sau 3 giây</p>
+            <button class="demo-btn" onclick="Modal.openAutoClose('modal-auto', 3000)">Mở modal</button>
+          </div>
+          <div class="demo-card">
+            <div class="demo-label">🔒 No Backdrop</div>
+            <p class="demo-desc">Không có backdrop, không đóng khi click ngoài</p>
+            <button class="demo-btn" onclick="Modal.open('modal-no-backdrop', { backdropClose: false, showBackdrop: false })">Mở modal</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── Section 5: API Reference ── -->
+      <section class="section">
+        <div class="section-header">
+          <div class="section-title">API Reference</div>
+          <div class="section-sub">Cách sử dụng Modal API</div>
+        </div>
+        <div class="code-card">
+          <div class="code-header">JavaScript API</div>
+          <pre class="code-block"><code><span class="c-comment">// Mở modal theo ID</span>
+Modal.open('my-modal');
+Modal.open('my-modal', { backdropClose: false });
+
+<span class="c-comment">// Đóng modal</span>
+Modal.close('my-modal');
+Modal.closeAll();
+
+<span class="c-comment">// Alert shortcuts</span>
+Modal.alert('success', 'Tiêu đề', 'Nội dung');
+Modal.alert('warning' | 'error' | 'info', ...);
+
+<span class="c-comment">// Confirm dialog</span>
+Modal.confirm('Tiêu đề', 'Nội dung', {
+  confirmText: 'OK',
+  cancelText: 'Hủy',
+  danger: true,
+  onConfirm: () =&gt; { /* ... */ },
+  onCancel:  () =&gt; { /* ... */ },
+});
+
+<span class="c-comment">// Auto-close</span>
+Modal.openAutoClose('modal-id', 3000); <span class="c-comment">// 3 giây</span>
+
+<span class="c-comment">// Events</span>
+document.addEventListener('modal:open',  e =&gt; console.log(e.detail.id));
+document.addEventListener('modal:close', e =&gt; console.log(e.detail.id));</code></pre>
+        </div>
+        <div class="code-card" style="margin-top: 12px">
+          <div class="code-header">HTML Structure</div>
+          <pre
+            class="code-block"
+          ><code><span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"modal-backdrop"</span> <span class="c-attr">data-modal-id</span>=<span class="c-str">"my-modal"</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"modal modal-sm | modal-lg | modal-full"</span>
+       <span class="c-attr">data-anim</span>=<span class="c-str">"scale | slide | zoom | flip"</span><span class="c-tag">&gt;</span>
+    <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"modal-header"</span><span class="c-tag">&gt;</span>
+      <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"modal-title"</span><span class="c-tag">&gt;</span>Tiêu đề<span class="c-tag">&lt;/div&gt;</span>
+      <span class="c-tag">&lt;button</span> <span class="c-attr">class</span>=<span class="c-str">"modal-close"</span><span class="c-tag">&gt;</span>✕<span class="c-tag">&lt;/button&gt;</span>
+    <span class="c-tag">&lt;/div&gt;</span>
+    <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"modal-body"</span><span class="c-tag">&gt;</span>Nội dung...<span class="c-tag">&lt;/div&gt;</span>
+    <span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"modal-footer"</span><span class="c-tag">&gt;</span>
+      <span class="c-tag">&lt;button</span> <span class="c-attr">class</span>=<span class="c-str">"btn-ghost modal-close"</span><span class="c-tag">&gt;</span>Hủy<span class="c-tag">&lt;/button&gt;</span>
+      <span class="c-tag">&lt;button</span> <span class="c-attr">class</span>=<span class="c-str">"btn-primary"</span><span class="c-tag">&gt;</span>Xác nhận<span class="c-tag">&lt;/button&gt;</span>
+    <span class="c-tag">&lt;/div&gt;</span>
+  <span class="c-tag">&lt;/div&gt;</span>
+<span class="c-tag">&lt;/div&gt;</span></code></pre>
+        </div>
+      </section>
+    </div>
+
+    <!-- ══════════════ MODAL DEFINITIONS ══════════════ -->
+
+    <!-- Default modal -->
+    <div class="modal-backdrop" data-modal-id="modal-default">
+      <div class="modal" data-anim="scale">
+        <div class="modal-header">
+          <div class="modal-title">Modal mặc định</div>
+          <button class="modal-close-btn">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+              <path
+                d="M2.22 2.22a.75.75 0 0 1 1.06 0L7 5.94l3.72-3.72a.75.75 0 1 1 1.06 1.06L8.06 7l3.72 3.72a.75.75 0 1 1-1.06 1.06L7 8.06l-3.72 3.72a.75.75 0 0 1-1.06-1.06L5.94 7 2.22 3.28a.75.75 0 0 1 0-1.06z"
+              />
+            </svg>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Đây là modal cơ bản với đầy đủ header, body và footer. Modal hỗ trợ đóng bằng nút ✕, phím <kbd>Escape</kbd> hoặc click ra ngoài backdrop.</p>
+          <p style="margin-top: 12px; color: var(--text-2); font-size: 13px">Thử nhấn <kbd>Escape</kbd> để đóng modal này.</p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-ghost modal-close-btn">Hủy</button>
+          <button
+            class="btn-primary"
+            onclick="
+              Modal.close('modal-default');
+              toast('Đã xác nhận!');
+            "
+          >
+            Xác nhận
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Small modal -->
+    <div class="modal-backdrop" data-modal-id="modal-small">
+      <div class="modal modal-sm" data-anim="scale">
+        <div class="modal-header">
+          <div class="modal-title">Đặt tên mới</div>
+          <button class="modal-close-btn">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+              <path
+                d="M2.22 2.22a.75.75 0 0 1 1.06 0L7 5.94l3.72-3.72a.75.75 0 1 1 1.06 1.06L8.06 7l3.72 3.72a.75.75 0 1 1-1.06 1.06L7 8.06l-3.72 3.72a.75.75 0 0 1-1.06-1.06L5.94 7 2.22 3.28a.75.75 0 0 1 0-1.06z"
+              />
+            </svg>
+          </button>
+        </div>
+        <div class="modal-body">
+          <label class="form-label">Tên tệp</label>
+          <input type="text" class="form-input" value="document-2024" placeholder="Nhập tên tệp..." />
+        </div>
+        <div class="modal-footer">
+          <button class="btn-ghost modal-close-btn">Hủy</button>
+          <button
+            class="btn-primary"
+            onclick="
+              Modal.close('modal-small');
+              toast('Đã đổi tên!');
+            "
+          >
+            Lưu
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Large modal -->
+    <div class="modal-backdrop" data-modal-id="modal-large">
+      <div class="modal modal-lg" data-anim="scale">
+        <div class="modal-header">
+          <div class="modal-title">Cài đặt nâng cao</div>
+          <button class="modal-close-btn">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+              <path
+                d="M2.22 2.22a.75.75 0 0 1 1.06 0L7 5.94l3.72-3.72a.75.75 0 1 1 1.06 1.06L8.06 7l3.72 3.72a.75.75 0 1 1-1.06 1.06L7 8.06l-3.72 3.72a.75.75 0 0 1-1.06-1.06L5.94 7 2.22 3.28a.75.75 0 0 1 0-1.06z"
+              />
+            </svg>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="settings-grid">
+            <div class="settings-group">
+              <div class="settings-group-title">Giao diện</div>
+              <div class="settings-row">
+                <label>Chủ đề</label
+                ><select class="form-select">
+                  <option>Sáng</option>
+                  <option>Tối</option>
+                  <option>Tự động</option>
+                </select>
+              </div>
+              <div class="settings-row">
+                <label>Font chữ</label
+                ><select class="form-select">
+                  <option>Inter</option>
+                  <option>System UI</option>
+                </select>
+              </div>
+              <div class="settings-row">
+                <label>Kích thước chữ</label
+                ><select class="form-select">
+                  <option>Nhỏ</option>
+                  <option selected>Vừa</option>
+                  <option>Lớn</option>
+                </select>
+              </div>
+            </div>
+            <div class="settings-group">
+              <div class="settings-group-title">Thông báo</div>
+              <div class="settings-row">
+                <label>Email thông báo</label>
+                <div class="toggle-wrap"><input type="checkbox" id="t1" class="toggle-input" checked /><label for="t1" class="toggle-label"></label></div>
+              </div>
+              <div class="settings-row">
+                <label>Push notification</label>
+                <div class="toggle-wrap"><input type="checkbox" id="t2" class="toggle-input" /><label for="t2" class="toggle-label"></label></div>
+              </div>
+              <div class="settings-row">
+                <label>Âm thanh</label>
+                <div class="toggle-wrap"><input type="checkbox" id="t3" class="toggle-input" checked /><label for="t3" class="toggle-label"></label></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-ghost modal-close-btn">Hủy</button>
+          <button
+            class="btn-primary"
+            onclick="
+              Modal.close('modal-large');
+              toast('Đã lưu cài đặt!');
+            "
+          >
+            Lưu thay đổi
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fullscreen modal -->
+    <div class="modal-backdrop" data-modal-id="modal-fullscreen">
+      <div class="modal modal-full" data-anim="scale">
+        <div class="modal-header">
+          <div class="modal-title">📝 Soạn thảo toàn màn hình</div>
+          <button class="modal-close-btn">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+              <path
+                d="M2.22 2.22a.75.75 0 0 1 1.06 0L7 5.94l3.72-3.72a.75.75 0 1 1 1.06 1.06L8.06 7l3.72 3.72a.75.75 0 1 1-1.06 1.06L7 8.06l-3.72 3.72a.75.75 0 0 1-1.06-1.06L5.94 7 2.22 3.28a.75.75 0 0 1 0-1.06z"
+              />
+            </svg>
+          </button>
+        </div>
+        <div class="modal-body" style="flex: 1; display: flex; flex-direction: column; gap: 0; padding: 0">
+          <textarea class="full-editor" placeholder="Bắt đầu viết...&#10;&#10;Nhấn Escape để đóng."></textarea>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-ghost modal-close-btn">Hủy</button>
+          <button
+            class="btn-primary"
+            onclick="
+              Modal.close('modal-fullscreen');
+              toast('Đã lưu!');
+            "
+          >
+            Lưu
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Animation modals -->
+    <div class="modal-backdrop" data-modal-id="modal-anim-scale">
+      <div class="modal modal-sm" data-anim="scale">
+        <div class="modal-header">
+          <div class="modal-title">✨ Fade + Scale</div>
+          <button class="modal-close-btn">✕</button>
+        </div>
+        <div class="modal-body"><p>Modal xuất hiện với hiệu ứng fade kết hợp scale nhẹ. Đây là animation mặc định, phù hợp với hầu hết use case.</p></div>
+        <div class="modal-footer"><button class="btn-primary modal-close-btn">Đóng</button></div>
+      </div>
+    </div>
+
+    <div class="modal-backdrop" data-modal-id="modal-anim-slide">
+      <div class="modal modal-sm" data-anim="slide">
+        <div class="modal-header">
+          <div class="modal-title">🚀 Slide Up</div>
+          <button class="modal-close-btn">✕</button>
+        </div>
+        <div class="modal-body"><p>Modal trượt từ dưới lên trên. Animation này rất phù hợp cho mobile — giống như bottom sheet trong iOS/Android.</p></div>
+        <div class="modal-footer"><button class="btn-primary modal-close-btn">Đóng</button></div>
+      </div>
+    </div>
+
+    <div class="modal-backdrop" data-modal-id="modal-anim-zoom">
+      <div class="modal modal-sm" data-anim="zoom">
+        <div class="modal-header">
+          <div class="modal-title">🔍 Zoom</div>
+          <button class="modal-close-btn">✕</button>
+        </div>
+        <div class="modal-body"><p>Modal phóng to từ kích thước nhỏ. Phù hợp cho dialog xác nhận, thông báo quan trọng cần thu hút sự chú ý.</p></div>
+        <div class="modal-footer"><button class="btn-primary modal-close-btn">Đóng</button></div>
+      </div>
+    </div>
+
+    <div class="modal-backdrop" data-modal-id="modal-anim-flip">
+      <div class="modal modal-sm" data-anim="flip">
+        <div class="modal-header">
+          <div class="modal-title">🎴 Flip 3D</div>
+          <button class="modal-close-btn">✕</button>
+        </div>
+        <div class="modal-body"><p>Hiệu ứng lật 3D ấn tượng. Dùng cho các thao tác đặc biệt như reveal, card flip, hoặc khi cần tạo điểm nhấn thị giác mạnh.</p></div>
+        <div class="modal-footer"><button class="btn-primary modal-close-btn">Đóng</button></div>
+      </div>
+    </div>
+
+    <!-- Form modal -->
+    <div class="modal-backdrop" data-modal-id="modal-form">
+      <div class="modal" data-anim="scale">
+        <div class="modal-header">
+          <div class="modal-title">Đăng nhập</div>
+          <button class="modal-close-btn">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+              <path
+                d="M2.22 2.22a.75.75 0 0 1 1.06 0L7 5.94l3.72-3.72a.75.75 0 1 1 1.06 1.06L8.06 7l3.72 3.72a.75.75 0 1 1-1.06 1.06L7 8.06l-3.72 3.72a.75.75 0 0 1-1.06-1.06L5.94 7 2.22 3.28a.75.75 0 0 1 0-1.06z"
+              />
+            </svg>
+          </button>
+        </div>
+        <div class="modal-body">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-input" placeholder="you@example.com" style="margin-bottom: 12px" />
+          <label class="form-label">Mật khẩu</label>
+          <input type="password" class="form-input" placeholder="••••••••" style="margin-bottom: 12px" />
+          <div style="display: flex; align-items: center; justify-content: space-between; font-size: 12px">
+            <label style="display: flex; align-items: center; gap: 6px; cursor: pointer; color: var(--text-2)"> <input type="checkbox" /> Ghi nhớ đăng nhập </label>
+            <a href="#" style="color: var(--accent); text-decoration: none">Quên mật khẩu?</a>
+          </div>
+        </div>
+        <div class="modal-footer" style="flex-direction: column; gap: 8px">
+          <button
+            class="btn-primary"
+            style="width: 100%"
+            onclick="
+              Modal.close('modal-form');
+              toast('Đăng nhập thành công! 🎉');
+            "
+          >
+            Đăng nhập
+          </button>
+          <p style="text-align: center; font-size: 12px; color: var(--text-2)">Chưa có tài khoản? <a href="#" style="color: var(--accent)">Đăng ký</a></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Image modal -->
+    <div class="modal-backdrop modal-dark" data-modal-id="modal-image">
+      <div class="modal modal-image-wrap" data-anim="zoom">
+        <button class="modal-close-btn img-close-btn">
+          <svg width="16" height="16" viewBox="0 0 14 14" fill="white">
+            <path
+              d="M2.22 2.22a.75.75 0 0 1 1.06 0L7 5.94l3.72-3.72a.75.75 0 1 1 1.06 1.06L8.06 7l3.72 3.72a.75.75 0 1 1-1.06 1.06L7 8.06l-3.72 3.72a.75.75 0 0 1-1.06-1.06L5.94 7 2.22 3.28a.75.75 0 0 1 0-1.06z"
+            />
+          </svg>
+        </button>
+        <div class="image-placeholder">
+          <svg width="64" height="64" viewBox="0 0 64 64" fill="rgba(255,255,255,0.15)">
+            <rect width="64" height="64" rx="8" />
+            <path d="M8 48l14-18 10 12 8-10 16 16H8z" fill="rgba(255,255,255,0.3)" />
+            <circle cx="44" cy="20" r="6" fill="rgba(255,255,255,0.3)" />
+          </svg>
+          <p style="color: rgba(255, 255, 255, 0.6); margin-top: 12px; font-size: 14px">Lightbox Image Viewer</p>
+          <p style="color: rgba(255, 255, 255, 0.35); font-size: 12px; margin-top: 4px">Click bên ngoài hoặc Escape để đóng</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stacked modals -->
+    <div class="modal-backdrop" data-modal-id="modal-stack-1">
+      <div class="modal" data-anim="scale">
+        <div class="modal-header">
+          <div class="modal-title">Modal cấp 1</div>
+          <button class="modal-close-btn">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+              <path
+                d="M2.22 2.22a.75.75 0 0 1 1.06 0L7 5.94l3.72-3.72a.75.75 0 1 1 1.06 1.06L8.06 7l3.72 3.72a.75.75 0 1 1-1.06 1.06L7 8.06l-3.72 3.72a.75.75 0 0 1-1.06-1.06L5.94 7 2.22 3.28a.75.75 0 0 1 0-1.06z"
+              />
+            </svg>
+          </button>
+        </div>
+        <div class="modal-body"><p>Đây là modal cấp 1. Bạn có thể mở thêm modal từ bên trong.</p></div>
+        <div class="modal-footer">
+          <button class="btn-ghost modal-close-btn">Đóng</button>
+          <button class="btn-primary" onclick="Modal.open('modal-stack-2')">Mở modal cấp 2 →</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-backdrop" data-modal-id="modal-stack-2">
+      <div class="modal modal-sm" data-anim="scale">
+        <div class="modal-header">
+          <div class="modal-title">Modal cấp 2</div>
+          <button class="modal-close-btn">✕</button>
+        </div>
+        <div class="modal-body"><p>Modal được stack bên trên modal trước. Stacking tối đa được hỗ trợ.</p></div>
+        <div class="modal-footer">
+          <button class="btn-ghost modal-close-btn">Đóng cấp 2</button>
+          <button class="btn-primary" onclick="Modal.open('modal-stack-3')">Mở cấp 3 →</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-backdrop" data-modal-id="modal-stack-3">
+      <div class="modal modal-sm" data-anim="zoom">
+        <div class="modal-header">
+          <div class="modal-title">Modal cấp 3 🎉</div>
+          <button class="modal-close-btn">✕</button>
+        </div>
+        <div class="modal-body"><p>Modal stacking hoạt động tốt! Mỗi modal có z-index riêng, backdrop riêng.</p></div>
+        <div class="modal-footer">
+          <button class="btn-ghost modal-close-btn">Đóng</button>
+          <button
+            class="btn-primary"
+            onclick="
+              Modal.closeAll();
+              toast('Đóng tất cả!');
+            "
+          >
+            Đóng tất cả
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Scrollable modal -->
+    <div class="modal-backdrop" data-modal-id="modal-scroll">
+      <div class="modal modal-lg" data-anim="scale">
+        <div class="modal-header">
+          <div class="modal-title">Điều khoản dịch vụ</div>
+          <button class="modal-close-btn">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+              <path
+                d="M2.22 2.22a.75.75 0 0 1 1.06 0L7 5.94l3.72-3.72a.75.75 0 1 1 1.06 1.06L8.06 7l3.72 3.72a.75.75 0 1 1-1.06 1.06L7 8.06l-3.72 3.72a.75.75 0 0 1-1.06-1.06L5.94 7 2.22 3.28a.75.75 0 0 1 0-1.06z"
+              />
+            </svg>
+          </button>
+        </div>
+        <div class="modal-body modal-body-scroll">
+          <h3 style="margin-bottom: 10px">1. Giới thiệu</h3>
+          <p style="margin-bottom: 16px; color: var(--text-2)">Bằng cách sử dụng dịch vụ của chúng tôi, bạn đồng ý với các điều khoản này. Vui lòng đọc kỹ trước khi tiếp tục.</p>
+          <h3 style="margin-bottom: 10px">2. Quyền riêng tư</h3>
+          <p style="margin-bottom: 16px; color: var(--text-2)">Chúng tôi cam kết bảo vệ quyền riêng tư của bạn. Dữ liệu cá nhân sẽ không được chia sẻ với bên thứ ba mà không có sự đồng ý của bạn.</p>
+          <h3 style="margin-bottom: 10px">3. Sử dụng hợp lệ</h3>
+          <p style="margin-bottom: 16px; color: var(--text-2)">Bạn đồng ý không sử dụng dịch vụ cho các mục đích bất hợp pháp hoặc vi phạm quyền của người khác.</p>
+          <h3 style="margin-bottom: 10px">4. Giới hạn trách nhiệm</h3>
+          <p style="margin-bottom: 16px; color: var(--text-2)">Dịch vụ được cung cấp "như hiện tại". Chúng tôi không đảm bảo tính liên tục hay không có lỗi của dịch vụ.</p>
+          <h3 style="margin-bottom: 10px">5. Thay đổi điều khoản</h3>
+          <p style="margin-bottom: 16px; color: var(--text-2)">Chúng tôi có quyền thay đổi điều khoản bất cứ lúc nào. Thông báo sẽ được gửi qua email trước 30 ngày.</p>
+          <h3 style="margin-bottom: 10px">6. Liên hệ</h3>
+          <p style="color: var(--text-2)">Mọi thắc mắc vui lòng liên hệ support@example.com</p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn-ghost modal-close-btn">Từ chối</button>
+          <button
+            class="btn-primary"
+            onclick="
+              Modal.close('modal-scroll');
+              toast('Đã đồng ý điều khoản!');
+            "
+          >
+            Đồng ý
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Auto-close modal -->
+    <div class="modal-backdrop" data-modal-id="modal-auto">
+      <div class="modal modal-sm" data-anim="scale">
+        <div class="modal-header"><div class="modal-title">✅ Thao tác thành công</div></div>
+        <div class="modal-body" style="text-align: center; padding: 24px 20px">
+          <div style="font-size: 40px; margin-bottom: 8px">🎉</div>
+          <p>Tự động đóng sau <strong id="countdown">3</strong> giây...</p>
+          <div class="auto-progress"><div class="auto-progress-bar" id="auto-progress-bar"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- No backdrop modal -->
+    <div class="modal-backdrop modal-no-backdrop-style" data-modal-id="modal-no-backdrop">
+      <div class="modal modal-sm" data-anim="slide" style="position: fixed; bottom: 24px; right: 24px; margin: 0">
+        <div class="modal-header">
+          <div class="modal-title">📌 Floating Panel</div>
+          <button class="modal-close-btn">✕</button>
+        </div>
+        <div class="modal-body"><p>Modal này không có backdrop và ở góc dưới phải. Phù hợp cho notification, help panel, hoặc widget nổi.</p></div>
+      </div>
+    </div>
+
+    <div class="toast-container" id="toasts"></div>
+    <script src="./script.js"></script>
+  </body>
+</html>
