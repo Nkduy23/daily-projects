@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Glide — Image Slider</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="nav-logo">
+        <div class="nav-logo-mark">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+            <path d="M1 3.5A1.5 1.5 0 0 1 2.5 2h9A1.5 1.5 0 0 1 13 3.5v7A1.5 1.5 0 0 1 11.5 12h-9A1.5 1.5 0 0 1 1 10.5v-7zM5.5 7 2 10h10L8.5 5 6.5 8 5.5 7z" />
+          </svg>
+        </div>
+        Glide
+      </div>
+      <div class="nav-tag">Image Slider · Day 12</div>
+    </nav>
+
+    <div class="page">
+      <!-- Page intro -->
+      <div class="page-intro">
+        <h1 class="page-title">Image Slider</h1>
+        <p class="page-desc">Carousel slider với touch/swipe, autoplay, thumbnails và nhiều transition effect.</p>
+      </div>
+
+      <!-- ── Slider 1: Hero fullwidth ── -->
+      <section class="section">
+        <div class="section-header">
+          <div class="section-title">Hero Slider</div>
+          <div class="section-sub">Fullwidth với caption và autoplay</div>
+        </div>
+
+        <div class="slider-wrap" id="slider-hero">
+          <div class="slider-track-wrap">
+            <div class="slider-track" id="hero-track">
+              <div class="slide" data-color="#1E3A5F">
+                <div class="slide-bg" style="background: linear-gradient(135deg, #1e3a5f 0%, #2b6cb0 100%)"></div>
+                <div class="slide-caption">
+                  <div class="caption-tag">Featured</div>
+                  <h2 class="caption-title">Khám phá thế giới qua ảnh</h2>
+                  <p class="caption-desc">Mỗi bức ảnh kể một câu chuyện. Hãy để hình ảnh dẫn dắt bạn đến những nơi chưa từng đặt chân.</p>
+                  <button class="caption-btn">Xem thêm →</button>
+                </div>
+                <div class="slide-visual">
+                  <div class="mock-img landscape" style="background: rgba(255, 255, 255, 0.08)">
+                    <svg width="80" height="60" viewBox="0 0 80 60" fill="none">
+                      <rect width="80" height="60" rx="6" fill="rgba(255,255,255,0.05)" />
+                      <path d="M8 48 22 28l14 16 10-12 18 16H8z" fill="rgba(255,255,255,0.15)" />
+                      <circle cx="58" cy="16" r="8" fill="rgba(255,255,255,0.15)" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div class="slide" data-color="#065F46">
+                <div class="slide-bg" style="background: linear-gradient(135deg, #065f46 0%, #10b981 100%)"></div>
+                <div class="slide-caption">
+                  <div class="caption-tag">Nature</div>
+                  <h2 class="caption-title">Thiên nhiên xanh mát</h2>
+                  <p class="caption-desc">Rừng núi, sông suối, biển cả — vẻ đẹp hoang sơ chưa bao giờ ngừng làm người ta ngây ngất.</p>
+                  <button class="caption-btn">Khám phá →</button>
+                </div>
+                <div class="slide-visual">
+                  <div class="mock-img landscape" style="background: rgba(255, 255, 255, 0.08)">
+                    <svg width="80" height="60" viewBox="0 0 80 60" fill="none">
+                      <rect width="80" height="60" rx="6" fill="rgba(255,255,255,0.05)" />
+                      <path d="M0 60 20 20 35 45 50 25 65 40 80 60H0z" fill="rgba(255,255,255,0.15)" />
+                      <circle cx="60" cy="12" r="10" fill="rgba(255,255,255,0.2)" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div class="slide" data-color="#7C2D12">
+                <div class="slide-bg" style="background: linear-gradient(135deg, #7c2d12 0%, #ea580c 100%)"></div>
+                <div class="slide-caption">
+                  <div class="caption-tag">Architecture</div>
+                  <h2 class="caption-title">Kiến trúc đương đại</h2>
+                  <p class="caption-desc">Những công trình táo bạo phá vỡ giới hạn của không gian và vật liệu, định nghĩa lại thẩm mỹ đô thị.</p>
+                  <button class="caption-btn">Tìm hiểu →</button>
+                </div>
+                <div class="slide-visual">
+                  <div class="mock-img landscape" style="background: rgba(255, 255, 255, 0.08)">
+                    <svg width="80" height="60" viewBox="0 0 80 60" fill="none">
+                      <rect width="80" height="60" rx="6" fill="rgba(255,255,255,0.05)" />
+                      <rect x="10" y="20" width="16" height="40" fill="rgba(255,255,255,0.15)" />
+                      <rect x="32" y="10" width="16" height="50" fill="rgba(255,255,255,0.15)" />
+                      <rect x="54" y="28" width="16" height="32" fill="rgba(255,255,255,0.15)" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+              <div class="slide" data-color="#4A1D96">
+                <div class="slide-bg" style="background: linear-gradient(135deg, #4a1d96 0%, #7c3aed 100%)"></div>
+                <div class="slide-caption">
+                  <div class="caption-tag">Abstract</div>
+                  <h2 class="caption-title">Nghệ thuật trừu tượng</h2>
+                  <p class="caption-desc">Màu sắc và hình khối hòa quyện tạo nên những tác phẩm vượt ra ngoài ngôn ngữ thông thường.</p>
+                  <button class="caption-btn">Xem gallery →</button>
+                </div>
+                <div class="slide-visual">
+                  <div class="mock-img landscape" style="background: rgba(255, 255, 255, 0.08)">
+                    <svg width="80" height="60" viewBox="0 0 80 60" fill="none">
+                      <rect width="80" height="60" rx="6" fill="rgba(255,255,255,0.05)" />
+                      <circle cx="20" cy="30" r="18" fill="rgba(255,255,255,0.12)" />
+                      <circle cx="50" cy="20" r="14" fill="rgba(255,255,255,0.12)" />
+                      <circle cx="65" cy="42" r="10" fill="rgba(255,255,255,0.12)" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Controls -->
+          <button class="slide-arrow prev" id="hero-prev" aria-label="Previous">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="currentColor"><path d="M11.5 4 6.5 9l5 5" /></svg>
+          </button>
+          <button class="slide-arrow next" id="hero-next" aria-label="Next">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="currentColor"><path d="M6.5 4l5 5-5 5" /></svg>
+          </button>
+
+          <!-- Dots -->
+          <div class="slide-dots" id="hero-dots"></div>
+
+          <!-- Progress bar -->
+          <div class="slide-progress"><div class="slide-progress-bar" id="hero-progress"></div></div>
+
+          <!-- Autoplay toggle -->
+          <button class="autoplay-btn" id="hero-autoplay" title="Pause/Play">
+            <svg class="play-icon" width="12" height="12" viewBox="0 0 12 12" fill="currentColor"><path d="M3 2.5v7l6-3.5-6-3.5z" /></svg>
+            <svg class="pause-icon" width="12" height="12" viewBox="0 0 12 12" fill="currentColor" style="display: none">
+              <rect x="2.5" y="2" width="3" height="8" rx="1" />
+              <rect x="6.5" y="2" width="3" height="8" rx="1" />
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      <!-- ── Slider 2: Thumbnails ── -->
+      <section class="section">
+        <div class="section-header">
+          <div class="section-title">Thumbnail Slider</div>
+          <div class="section-sub">Click thumbnail để chuyển slide</div>
+        </div>
+
+        <div class="slider-wrap thumb-slider-wrap" id="slider-thumb">
+          <div class="slider-track-wrap">
+            <div class="slider-track" id="thumb-track">
+              <div class="slide slide-card">
+                <div class="card-slide-inner" style="background: linear-gradient(135deg, #0f172a, #1e40af)"><div class="card-label">🏙️ Đô thị</div></div>
+              </div>
+              <div class="slide slide-card">
+                <div class="card-slide-inner" style="background: linear-gradient(135deg, #14532d, #16a34a)"><div class="card-label">🌿 Thiên nhiên</div></div>
+              </div>
+              <div class="slide slide-card">
+                <div class="card-slide-inner" style="background: linear-gradient(135deg, #7c2d12, #dc2626)"><div class="card-label">🌅 Hoàng hôn</div></div>
+              </div>
+              <div class="slide slide-card">
+                <div class="card-slide-inner" style="background: linear-gradient(135deg, #1e3a5f, #0ea5e9)"><div class="card-label">🌊 Biển cả</div></div>
+              </div>
+              <div class="slide slide-card">
+                <div class="card-slide-inner" style="background: linear-gradient(135deg, #4a1d96, #a855f7)"><div class="card-label">🎨 Nghệ thuật</div></div>
+              </div>
+            </div>
+          </div>
+          <button class="slide-arrow prev" id="thumb-prev">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="currentColor"><path d="M11.5 4 6.5 9l5 5" /></svg>
+          </button>
+          <button class="slide-arrow next" id="thumb-next">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="currentColor"><path d="M6.5 4l5 5-5 5" /></svg>
+          </button>
+          <!-- Thumbnails -->
+          <div class="thumbnails" id="thumb-list"></div>
+        </div>
+      </section>
+
+      <!-- ── Slider 3: Card / multi-item ── -->
+      <section class="section">
+        <div class="section-header">
+          <div class="section-title">Card Slider</div>
+          <div class="section-sub">Hiển thị nhiều item — peek effect</div>
+        </div>
+
+        <div class="card-slider-outer" id="slider-cards">
+          <div class="card-slider-track" id="cards-track">
+            <div class="card-slide-item">
+              <div class="csi-inner" style="background: linear-gradient(135deg, #1e3a5f, #2b6cb0)">
+                <div class="csi-num">01</div>
+                <div class="csi-label">Mountain</div>
+              </div>
+            </div>
+            <div class="card-slide-item">
+              <div class="csi-inner" style="background: linear-gradient(135deg, #065f46, #10b981)">
+                <div class="csi-num">02</div>
+                <div class="csi-label">Forest</div>
+              </div>
+            </div>
+            <div class="card-slide-item">
+              <div class="csi-inner" style="background: linear-gradient(135deg, #7c2d12, #ea580c)">
+                <div class="csi-num">03</div>
+                <div class="csi-label">Desert</div>
+              </div>
+            </div>
+            <div class="card-slide-item">
+              <div class="csi-inner" style="background: linear-gradient(135deg, #0c4a6e, #0ea5e9)">
+                <div class="csi-num">04</div>
+                <div class="csi-label">Ocean</div>
+              </div>
+            </div>
+            <div class="card-slide-item">
+              <div class="csi-inner" style="background: linear-gradient(135deg, #4a1d96, #7c3aed)">
+                <div class="csi-num">05</div>
+                <div class="csi-label">Aurora</div>
+              </div>
+            </div>
+            <div class="card-slide-item">
+              <div class="csi-inner" style="background: linear-gradient(135deg, #881337, #f43f5e)">
+                <div class="csi-num">06</div>
+                <div class="csi-label">Sunset</div>
+              </div>
+            </div>
+          </div>
+          <button class="slide-arrow prev flat" id="cards-prev">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="currentColor"><path d="M11.5 4 6.5 9l5 5" /></svg>
+          </button>
+          <button class="slide-arrow next flat" id="cards-next">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="currentColor"><path d="M6.5 4l5 5-5 5" /></svg>
+          </button>
+          <div class="slide-dots flat-dots" id="cards-dots"></div>
+        </div>
+      </section>
+
+      <!-- ── Slider 4: Fade transition ── -->
+      <section class="section">
+        <div class="section-header">
+          <div class="section-title">Fade Slider</div>
+          <div class="section-sub">Crossfade giữa các slide</div>
+        </div>
+
+        <div class="fade-slider" id="slider-fade">
+          <div class="fade-track" id="fade-track">
+            <div class="fade-slide active" style="background: linear-gradient(135deg, #0f172a, #1d4ed8)"><div class="fade-label">🌌 Galaxy</div></div>
+            <div class="fade-slide" style="background: linear-gradient(135deg, #14532d, #15803d)"><div class="fade-label">🌲 Forest</div></div>
+            <div class="fade-slide" style="background: linear-gradient(135deg, #7f1d1d, #b91c1c)"><div class="fade-label">🌋 Volcano</div></div>
+            <div class="fade-slide" style="background: linear-gradient(135deg, #1e3a5f, #06b6d4)"><div class="fade-label">🏝️ Island</div></div>
+          </div>
+          <button class="slide-arrow prev" id="fade-prev">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="currentColor"><path d="M11.5 4 6.5 9l5 5" /></svg>
+          </button>
+          <button class="slide-arrow next" id="fade-next">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="currentColor"><path d="M6.5 4l5 5-5 5" /></svg>
+          </button>
+          <div class="slide-dots" id="fade-dots"></div>
+        </div>
+      </section>
+    </div>
+
+    <div class="toast-container" id="toasts"></div>
+    <script src="./script.js"></script>
+  </body>
+</html>
