@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Voices — Testimonial Slider</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="nav-logo">
+        <div class="nav-logo-mark">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="currentColor">
+            <path
+              d="M3.5 1.5C2.1 1.5 1 2.6 1 4S2.1 6.5 3.5 6.5c.3 0 .5.2.5.5C4 8.4 3.3 9.5 2 10.5l1 1c1.8-1.2 3-3.2 3-5.5C6 3.1 4.9 2 3.5 2V1.5zm7 0v.5C9.1 2 8 3.1 8 4.5 8 6.8 9.2 8.8 11 10l1-1C10.7 8 10 7 10 6.5c0-.3.2-.5.5-.5C11.9 6 13 4.9 13 3.5S11.9 2 10.5 2V1.5z"
+            />
+          </svg>
+        </div>
+        Voices
+      </div>
+      <div class="nav-tag">Testimonial Slider · Day 13</div>
+    </nav>
+
+    <div class="page">
+      <div class="page-intro">
+        <h1 class="page-title">Testimonial Slider</h1>
+        <p class="page-desc">4 biến thể testimonial đẹp — card, quote, minimal và grid showcase.</p>
+      </div>
+
+      <!-- ══ Variant 1: Card Testimonial ══ -->
+      <section class="section">
+        <div class="section-header">
+          <div class="section-title">Card Testimonial</div>
+          <div class="section-sub">Đánh giá dạng card với avatar và rating</div>
+        </div>
+
+        <div class="tslider card-tslider" id="card-slider">
+          <div class="ts-track-wrap">
+            <div class="ts-track" id="card-track">
+              <div class="ts-slide">
+                <div class="tcard">
+                  <div class="tcard-header">
+                    <div class="tcard-avatar" style="background: linear-gradient(135deg, #2b6cb0, #60a5fa)">NT</div>
+                    <div class="tcard-author">
+                      <div class="author-name">Nguyễn Thành</div>
+                      <div class="author-role">CTO · TechViet JSC</div>
+                    </div>
+                    <div class="tcard-logo">⚡</div>
+                  </div>
+                  <div class="stars">★★★★★</div>
+                  <blockquote class="tcard-quote">
+                    "Sản phẩm vượt xa kỳ vọng của chúng tôi. Team hỗ trợ luôn sẵn sàng và phản hồi cực nhanh. Chúng tôi đã tăng hiệu suất làm việc lên <strong>40%</strong> chỉ sau 1 tháng."
+                  </blockquote>
+                  <div class="tcard-meta">Tháng 12, 2024 · Hà Nội</div>
+                </div>
+              </div>
+
+              <div class="ts-slide">
+                <div class="tcard">
+                  <div class="tcard-header">
+                    <div class="tcard-avatar" style="background: linear-gradient(135deg, #16a34a, #4ade80)">ML</div>
+                    <div class="tcard-author">
+                      <div class="author-name">Mai Linh</div>
+                      <div class="author-role">Product Manager · StartupX</div>
+                    </div>
+                    <div class="tcard-logo">🚀</div>
+                  </div>
+                  <div class="stars">★★★★★</div>
+                  <blockquote class="tcard-quote">"Giao diện trực quan, tính năng mạnh mẽ. Đây là công cụ không thể thiếu trong workflow của đội ngũ chúng tôi. Rất đáng đồng tiền bỏ ra!"</blockquote>
+                  <div class="tcard-meta">Tháng 11, 2024 · TP. HCM</div>
+                </div>
+              </div>
+
+              <div class="ts-slide">
+                <div class="tcard">
+                  <div class="tcard-header">
+                    <div class="tcard-avatar" style="background: linear-gradient(135deg, #7c3aed, #a78bfa)">TH</div>
+                    <div class="tcard-author">
+                      <div class="author-name">Trần Hùng</div>
+                      <div class="author-role">CEO · Digital Agency</div>
+                    </div>
+                    <div class="tcard-logo">💎</div>
+                  </div>
+                  <div class="stars">★★★★★</div>
+                  <blockquote class="tcard-quote">
+                    "Chúng tôi đã thử nhiều giải pháp khác nhưng đây là cái duy nhất thực sự giải quyết được bài toán của chúng tôi. Highly recommend cho bất kỳ team nào!"
+                  </blockquote>
+                  <div class="tcard-meta">Tháng 10, 2024 · Đà Nẵng</div>
+                </div>
+              </div>
+
+              <div class="ts-slide">
+                <div class="tcard">
+                  <div class="tcard-header">
+                    <div class="tcard-avatar" style="background: linear-gradient(135deg, #ea580c, #fbbf24)">PL</div>
+                    <div class="tcard-author">
+                      <div class="author-name">Phương Linh</div>
+                      <div class="author-role">Designer · Freelance</div>
+                    </div>
+                    <div class="tcard-logo">🎨</div>
+                  </div>
+                  <div class="stars">★★★★☆</div>
+                  <blockquote class="tcard-quote">
+                    "Thiết kế đẹp, UX mượt mà. Mình đã giới thiệu cho hơn 20 khách hàng và ai cũng hài lòng. Hy vọng sẽ có thêm nhiều tính năng hơn trong tương lai."
+                  </blockquote>
+                  <div class="tcard-meta">Tháng 9, 2024 · Cần Thơ</div>
+                </div>
+              </div>
+
+              <div class="ts-slide">
+                <div class="tcard">
+                  <div class="tcard-header">
+                    <div class="tcard-avatar" style="background: linear-gradient(135deg, #0c4a6e, #06b6d4)">VK</div>
+                    <div class="tcard-author">
+                      <div class="author-name">Văn Khoa</div>
+                      <div class="author-role">Engineer · FinTech Co.</div>
+                    </div>
+                    <div class="tcard-logo">💰</div>
+                  </div>
+                  <div class="stars">★★★★★</div>
+                  <blockquote class="tcard-quote">
+                    "Integration API rất tốt, documentation rõ ràng. Đội ngũ của chúng tôi chỉ mất <strong>2 ngày</strong> để tích hợp hoàn toàn vào hệ thống hiện có."
+                  </blockquote>
+                  <div class="tcard-meta">Tháng 8, 2024 · Hà Nội</div>
+                </div>
+              </div>
+            </div>
+            <!-- /ts-track -->
+          </div>
+
+          <button class="ts-arrow prev" id="card-prev">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 4 6 8l4 4" /></svg>
+          </button>
+          <button class="ts-arrow next" id="card-next">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 4l4 4-4 4" /></svg>
+          </button>
+          <div class="ts-dots" id="card-dots"></div>
+        </div>
+      </section>
+
+      <!-- ══ Variant 2: Big Quote ══ -->
+      <section class="section">
+        <div class="section-header">
+          <div class="section-title">Big Quote</div>
+          <div class="section-sub">Testimonial nổi bật với quote lớn — dùng cho landing page hero</div>
+        </div>
+
+        <div class="tslider quote-tslider" id="quote-slider">
+          <div class="quote-mark">"</div>
+
+          <div class="quote-track-wrap">
+            <div class="quote-track" id="quote-track">
+              <div class="quote-slide">
+                <p class="quote-text">Đây không chỉ là một sản phẩm — đây là đối tác chiến lược giúp chúng tôi scale từ 10 lên 100 khách hàng trong vòng 6 tháng.</p>
+                <div class="quote-author">
+                  <div class="qa-avatar" style="background: linear-gradient(135deg, #1e3a5f, #3b82f6)">BT</div>
+                  <div>
+                    <div class="qa-name">Bảo Trâm</div>
+                    <div class="qa-role">Founder & CEO · SaaSViet</div>
+                  </div>
+                  <div class="qa-stars">★★★★★</div>
+                </div>
+              </div>
+
+              <div class="quote-slide">
+                <p class="quote-text">Chúng tôi đã tìm kiếm giải pháp này trong 2 năm. Khi tìm thấy, mọi thứ thay đổi hoàn toàn. Productivity của team tăng 3 lần chỉ trong một quý.</p>
+                <div class="quote-author">
+                  <div class="qa-avatar" style="background: linear-gradient(135deg, #7c2d12, #f97316)">HN</div>
+                  <div>
+                    <div class="qa-name">Hải Nam</div>
+                    <div class="qa-role">COO · LogiTech Vietnam</div>
+                  </div>
+                  <div class="qa-stars">★★★★★</div>
+                </div>
+              </div>
+
+              <div class="quote-slide">
+                <p class="quote-text">Tôi đã giới thiệu cho tất cả startup trong portfolio của mình. Đây là rare case mà sản phẩm vừa simple, vừa powerful, vừa affordable.</p>
+                <div class="quote-author">
+                  <div class="qa-avatar" style="background: linear-gradient(135deg, #14532d, #22c55e)">KP</div>
+                  <div>
+                    <div class="qa-name">Kim Phụng</div>
+                    <div class="qa-role">Partner · Mekong Capital</div>
+                  </div>
+                  <div class="qa-stars">★★★★★</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="quote-controls">
+            <button class="qt-btn" id="quote-prev">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 4 6 8l4 4" /></svg>
+            </button>
+            <div class="ts-dots inline-dots" id="quote-dots"></div>
+            <button class="qt-btn" id="quote-next">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 4l4 4-4 4" /></svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ Variant 3: Minimal ══ -->
+      <section class="section">
+        <div class="section-header">
+          <div class="section-title">Minimal Slider</div>
+          <div class="section-sub">Thiết kế tối giản — chỉ text và avatar</div>
+        </div>
+
+        <div class="minimal-slider" id="minimal-slider">
+          <div class="minimal-inner" id="minimal-track">
+            <div class="minimal-slide active">
+              <div class="minimal-text">"Tốt nhất trong class. Không có gì để chê."</div>
+              <div class="minimal-author">
+                <div class="mini-avatar" style="background: #2b6cb0">AT</div>
+                <span class="mini-name">Anh Tuấn</span>
+                <span class="mini-sep">·</span>
+                <span class="mini-role">Senior Dev</span>
+              </div>
+            </div>
+
+            <div class="minimal-slide">
+              <div class="minimal-text">"Đã dùng 6 tháng, không có lý do gì để chuyển sang cái khác."</div>
+              <div class="minimal-author">
+                <div class="mini-avatar" style="background: #16a34a">TQ</div>
+                <span class="mini-name">Thu Quỳnh</span>
+                <span class="mini-sep">·</span>
+                <span class="mini-role">Marketing Lead</span>
+              </div>
+            </div>
+
+            <div class="minimal-slide">
+              <div class="minimal-text">"ROI rõ ràng ngay từ tuần đầu tiên sử dụng."</div>
+              <div class="minimal-author">
+                <div class="mini-avatar" style="background: #7c3aed">MH</div>
+                <span class="mini-name">Minh Hiếu</span>
+                <span class="mini-sep">·</span>
+                <span class="mini-role">Business Owner</span>
+              </div>
+            </div>
+
+            <div class="minimal-slide">
+              <div class="minimal-text">"Support 10/10. Có vấn đề gì là họ giải quyết trong vòng 1 tiếng."</div>
+              <div class="minimal-author">
+                <div class="mini-avatar" style="background: #ea580c">LP</div>
+                <span class="mini-name">Lan Phương</span>
+                <span class="mini-sep">·</span>
+                <span class="mini-role">Operations Manager</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="minimal-controls">
+            <button class="min-btn" id="min-prev">←</button>
+            <div class="ts-dots flat-dots" id="minimal-dots"></div>
+            <button class="min-btn" id="min-next">→</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ══ Variant 4: Stats + Testimonial ══ -->
+      <section class="section">
+        <div class="section-header">
+          <div class="section-title">Stats Showcase</div>
+          <div class="section-sub">Kết hợp số liệu ấn tượng và testimonial</div>
+        </div>
+
+        <div class="stats-showcase">
+          <div class="stats-left">
+            <div class="stats-eyebrow">Được tin dùng bởi</div>
+            <div class="stats-headline">3,200+<br />khách hàng</div>
+            <div class="stats-grid">
+              <div class="stat-pill"><span class="stat-num">98%</span><span class="stat-lbl">Hài lòng</span></div>
+              <div class="stat-pill"><span class="stat-num">4.9★</span><span class="stat-lbl">Đánh giá</span></div>
+              <div class="stat-pill"><span class="stat-num">40+</span><span class="stat-lbl">Quốc gia</span></div>
+              <div class="stat-pill"><span class="stat-num">2m</span><span class="stat-lbl">Avg. response</span></div>
+            </div>
+            <div class="avatars-row">
+              <div class="av" style="background: #2b6cb0">NT</div>
+              <div class="av" style="background: #16a34a">ML</div>
+              <div class="av" style="background: #7c3aed">TH</div>
+              <div class="av" style="background: #ea580c">PL</div>
+              <div class="av" style="background: #0c4a6e">VK</div>
+              <div class="av more">+3.2k</div>
+            </div>
+          </div>
+
+          <div class="stats-right">
+            <div class="showcase-slider" id="showcase-slider">
+              <div class="showcase-track" id="showcase-track">
+                <div class="showcase-slide">
+                  <div class="ss-quote">"Quyết định đúng đắn nhất mà chúng tôi đã làm năm ngoái."</div>
+                  <div class="ss-author">
+                    <div class="ss-avatar" style="background: linear-gradient(135deg, #2b6cb0, #60a5fa)">BT</div>
+                    <div>
+                      <div class="ss-name">Bảo Trâm</div>
+                      <div class="ss-role">CEO · SaaSViet</div>
+                    </div>
+                  </div>
+                  <div class="ss-tag">🏆 Top reviewer 2024</div>
+                </div>
+
+                <div class="showcase-slide">
+                  <div class="ss-quote">"Onboarding nhanh, giá trị mang lại ngay từ ngày đầu."</div>
+                  <div class="ss-author">
+                    <div class="ss-avatar" style="background: linear-gradient(135deg, #16a34a, #4ade80)">HN</div>
+                    <div>
+                      <div class="ss-name">Hải Nam</div>
+                      <div class="ss-role">COO · LogiTech</div>
+                    </div>
+                  </div>
+                  <div class="ss-tag">⚡ Power user</div>
+                </div>
+
+                <div class="showcase-slide">
+                  <div class="ss-quote">"Team support phản hồi nhanh hơn cả nội bộ của chúng tôi!"</div>
+                  <div class="ss-author">
+                    <div class="ss-avatar" style="background: linear-gradient(135deg, #7c3aed, #a78bfa)">KP</div>
+                    <div>
+                      <div class="ss-name">Kim Phụng</div>
+                      <div class="ss-role">Partner · VC Fund</div>
+                    </div>
+                  </div>
+                  <div class="ss-tag">💬 Most helpful</div>
+                </div>
+              </div>
+
+              <div class="showcase-controls">
+                <button class="sc-btn" id="sc-prev">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 3 5 7l4 4" /></svg>
+                </button>
+                <div class="ts-dots sc-dots" id="sc-dots"></div>
+                <button class="sc-btn" id="sc-next">
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 3l4 4-4 4" /></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div class="toast-container" id="toasts"></div>
+    <script src="./script.js"></script>
+  </body>
+</html>
